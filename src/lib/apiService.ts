@@ -16,7 +16,7 @@ class ApiService {
         });
     }
 
-    getPageContent(): Promise<PageContent | void> {
+    getPageContent(): Promise<PageContent> {
         return this._client.getEntries()
             .then((pageContent: EntryCollection<any>) => pageContent);
     }

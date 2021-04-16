@@ -1,19 +1,17 @@
 import { useEffect } from 'react';
 import styles from './App.module.css';
-import { apiService } from './lib/apiService';
-import { initState, reducer } from './lib/store';
+import { initState, reducer, actions } from './lib/store';
 import useAsyncReducer from './lib/useAsyncReducer';
 
 import Navigation from './components/Navigation/Navigation';
 
 
 function App() {
-    const [ state, dispatch ] = useAsyncReducer(reducer, initState);
+    const { state, asyncDispatch } = useAsyncReducer(reducer, initState);
 
     useEffect(() => {
-        // @ts-ignore
-        dispatch(apiService.getPageContent().then(result => ({ type: 'get-page-content', pageContent: result })));
-    }, [ dispatch ]);
+        asyncDispatch(actions.getPageContent());
+    }, [ asyncDispatch ]);
 
     console.log('app render', state);// TODO remove dev code
 

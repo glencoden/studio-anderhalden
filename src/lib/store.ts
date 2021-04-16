@@ -1,11 +1,8 @@
 import { State, Action } from './project-declarations';
+import { apiService } from './apiService';
 
 export const ActionTypes = {
     GET_PAGE_CONTENT: 'get-page-content'
-};
-
-export const actionCreators = {
-    action: null
 };
 
 export const initState = {
@@ -22,3 +19,6 @@ export function reducer(state: State, action: Action): State {
     }
 }
 
+export const actions = {
+    getPageContent: () => apiService.getPageContent().then(result => ({ type: ActionTypes.GET_PAGE_CONTENT, pageContent: result }))
+};

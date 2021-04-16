@@ -1,3 +1,5 @@
+import { ActionTypes } from './store';
+
 import { Dispatch } from 'react';
 import { EntryCollection, FieldType } from 'contentful';
 
@@ -14,6 +16,6 @@ export type State = {
     error?: string;
 }
 
-export type Action = { type: 'get-page-content', pageContent: PageContent };
+export type Action = { type: ActionTypes.GET_PAGE_CONTENT, pageContent: PageContent };
 
 export type Reducer = (state: State, action: Action) => State;

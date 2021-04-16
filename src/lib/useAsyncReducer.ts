@@ -14,7 +14,7 @@ function useAsyncReducer(reducer: Reducer, initState: State) {
     const [ state, dispatch ] = useReducer(reducer, initState);
     const asyncDispatch = useMemo(() => wrapAsync(dispatch), [ dispatch] );
 
-    return [ state, asyncDispatch ];
+    return { state, asyncDispatch };
 }
 
 export default useAsyncReducer;
