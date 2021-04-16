@@ -1,9 +1,9 @@
-import './App.css';
+import styles from './App.module.css';
 
 
 function App() {
     return (
-        <div className="App">
+        <div className={styles.App}>
             <h1>Studio Anderhalden</h1>
             <p>Independent design studio für Gebrauchsgrafik. We offer solutions within the range of visual communication für lokale and (theoretisch) international clients.</p>
             <h2>Basis</h2>
