@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import styles from './App.module.css';
-import { initState, reducer, actions } from './lib/store';
-import useAsyncReducer from './lib/useAsyncReducer';
+import { initState, reducer, actions } from './store/store';
+import useAsyncReducer from './hooks/useAsyncReducer';
 
 import Navigation from './components/Navigation/Navigation';
 
 
-function App() {
+function App(): JSX.Element {
     const { state, asyncDispatch } = useAsyncReducer(reducer, initState);
 
     useEffect(() => {

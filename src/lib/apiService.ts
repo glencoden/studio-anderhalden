@@ -1,4 +1,6 @@
-import { ContentfulClientApi, EntryCollection, PageContent } from './project-declarations';
+import { ContentfulClientApi, EntryCollection, FieldType } from 'contentful';
+
+export type PageContent = EntryCollection<FieldType> | EntryCollection<unknown> | null;
 
 const contentful = require('contentful');
 
@@ -17,8 +19,7 @@ class ApiService {
     }
 
     getPageContent(): Promise<PageContent> {
-        return this._client.getEntries()
-            .then((pageContent: EntryCollection<any>) => pageContent);
+        return this._client.getEntries();
     }
 }
 
