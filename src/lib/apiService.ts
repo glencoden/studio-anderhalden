@@ -1,4 +1,4 @@
-import { ContentfulClientApi, PageContent } from '../../global';
+import { ContentfulClientApi, SiteContent } from '../../global';
 
 const contentful = require('contentful');
 
@@ -16,7 +16,7 @@ class ApiService {
         });
     }
 
-    getPageContent(): Promise<PageContent> {
+    getSiteContent(): Promise<SiteContent> {
         return this._client.getEntries();
     }
 }

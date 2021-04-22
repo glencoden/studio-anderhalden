@@ -1,20 +1,20 @@
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 html {
     --black: #000;
     --grey: #BDBDBD;
     --light-grey: #F5F5F5;
     --white: #FFF;
+
+    --animation-time: 0.6s;
+}
+
+@font-face {
+    font-family: 'Basel Grotesk';
+    src: url('./fonts/Basel-Grotesk-Regular.woff2') format('woff2'), url('./fonts/Basel-Grotesk-Regular.woff') format('woff');
+}
+
+body {
+    margin: 0;
+    font-family: 'Basel Grotesk', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

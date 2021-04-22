@@ -1,24 +1,51 @@
-import { State, Action } from '../../global';
+import { State, ActionTypesType, PagesType, Action, Actions } from '../../global';
 import { apiService } from '../lib/apiService';
 
-export const ActionTypes = {
-    GET_PAGE_CONTENT: 'get-page-content'
+
+// enums
+
+export const ActionTypes: ActionTypesType = {
+    GET_SITE_CONTENT: 'get-site-content'
 };
 
-export const initState = {
-    pageContent: null,
-    isLoading: false
+export const Pages: PagesType = {
+    HOME: 'home',
+    PROJECTS: 'projects',
+    PROJECT_DETAIL: 'project-detail',
+    CONTACT: 'contact'
 };
+
+
+// initial state
+
+export const initState = {
+    siteContent: null,
+    selectedPage: Pages.HOME,
+    selectedProjectId: ''
+};
+
+
+// reducer
 
 export function reducer(state: State, action: Action): State {
     switch (action.type) {
-        case ActionTypes.GET_PAGE_CONTENT:
-            return { ...state, pageContent: action.pageContent };
+        case ActionTypes.GET_SITE_CONTENT:
+            return { ...state, siteContent: action.payload };
         default:
             return state;
     }
 }
 
-export const actions = {
-    getPageContent: () => apiService.getPageContent().then(pageContent => ({ type: ActionTypes.GET_PAGE_CONTENT, pageContent }))
+
+// actions
+
+function getSiteContent(): Promise<Action> {
+    return new Promise(resolve => {
+        apiService.getSiteContent()
+            .then(siteContent => resolve({ type: ActionTypes.GET_SITE_CONTENT, payload: siteContent }));
+    });
+}
+
+export const actions: Actions = {
+    getSiteContent
 };
