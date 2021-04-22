@@ -12,7 +12,7 @@ export const Pages: PagesType = {
     HOME: 'home',
     PROJECTS: 'projects',
     PROJECT_DETAIL: 'project-detail',
-    CONTACT: 'contact'
+    INFO: 'info'
 };
 
 

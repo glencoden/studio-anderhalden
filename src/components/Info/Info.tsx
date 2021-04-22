@@ -1,6 +1,6 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-function Contact({ items }: any): JSX.Element {
+function Info({ items }: any): JSX.Element {
     if (!Array.isArray(items)) {
         return <div>Info Loading...</div>;
     }
@@ -17,4 +17,4 @@ function Contact({ items }: any): JSX.Element {
     );
 }
 
-export default Contact;
+export default Info;

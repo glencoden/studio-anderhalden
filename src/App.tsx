@@ -4,7 +4,7 @@ import { initState, reducer, actions } from './store/store';
 import useAsyncReducer from './hooks/useAsyncReducer';
 
 import Navigation from './components/Navigation/Navigation';
-import Contact from './components/Contact/Contact';
+import Info from './components/Info/Info';
 
 
 function App(): JSX.Element {
@@ -19,7 +19,7 @@ function App(): JSX.Element {
     return (
         <div className={styles.App}>
             <Navigation navElement={'Grafik'} />
-            <Contact items={state.siteContent?.items} />
+            <Info items={state.siteContent?.items} />
         </div>
     );
 }

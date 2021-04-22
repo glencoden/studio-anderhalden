@@ -1,4 +1,5 @@
 import { ContentfulClientApi, SiteContent } from '../../global';
+import siteContentParser from './siteContentParser';
 
 const contentful = require('contentful');
 
@@ -17,7 +18,8 @@ class ApiService {
     }
 
     getSiteContent(): Promise<SiteContent> {
-        return this._client.getEntries();
+        return this._client.getEntries()
+            .then(response => siteContentParser(response));
     }
 }
 
