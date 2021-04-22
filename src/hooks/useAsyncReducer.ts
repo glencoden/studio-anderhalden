@@ -1,7 +1,5 @@
-import { Dispatch, useMemo, useReducer } from 'react';
-import { State, Reducer } from '../store/store';
-
-type AsyncDispatch<T> = Dispatch<T | Promise<T>>
+import { Dispatch, AsyncDispatch, State, Reducer } from '../../global';
+import { useMemo, useReducer } from 'react';
 
 function wrapAsync<T>(dispatch: Dispatch<T>): AsyncDispatch<T> {
     return (action: T | Promise<T>) => {

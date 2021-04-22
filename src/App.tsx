@@ -4,6 +4,7 @@ import { initState, reducer, actions } from './store/store';
 import useAsyncReducer from './hooks/useAsyncReducer';
 
 import Navigation from './components/Navigation/Navigation';
+import ContactAndInfo from './components/ContactAndInfo/ContactAndInfo';
 
 
 function App(): JSX.Element {
@@ -18,6 +19,7 @@ function App(): JSX.Element {
     return (
         <div className={styles.App}>
             <Navigation navElement={'Grafik'} />
+            <ContactAndInfo items={state.pageContent?.items} />
         </div>
     );
 }

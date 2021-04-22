@@ -1,6 +1,4 @@
-import { ContentfulClientApi, EntryCollection, FieldType } from 'contentful';
-
-export type PageContent = EntryCollection<FieldType> | EntryCollection<unknown> | null;
+import { ContentfulClientApi, PageContent } from '../../global';
 
 const contentful = require('contentful');
 

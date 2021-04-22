@@ -1,20 +1,9 @@
-import { PageContent, apiService } from '../lib/apiService';
+import { State, Action } from '../../global';
+import { apiService } from '../lib/apiService';
 
 export const ActionTypes = {
     GET_PAGE_CONTENT: 'get-page-content'
 };
-
-export type State = {
-    pageContent: PageContent;
-    isLoading?: boolean;
-    error?: string;
-}
-
-export interface Action extends State {
-    type: string;
-}
-
-export type Reducer = (state: State, action: Action) => State;
 
 export const initState = {
     pageContent: null,
