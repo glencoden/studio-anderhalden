@@ -22,6 +22,11 @@ class ApiService {
         return this._client.getEntries()
             .then(response => siteContentParser(response));
     }
+
+    getImageUrl({ id, width, height }: { id: string, width: number, height: number }): Promise<string> {
+        return this._client.getAsset(id)
+            .then(asset => `${asset.fields.file.url}?fit=fill&w=${width}&h=${height}`);
+    }
 }
 
 export const apiService = new ApiService();

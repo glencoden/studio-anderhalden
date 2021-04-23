@@ -1,10 +1,23 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
+import Image from '../Image/Image';
+
 
 function Info({ items }: any): JSX.Element {
+    if (!items) {
+        return <div />;
+    }
+
     return (
         <div>
-            {documentToReactComponents(items?.[0].text)}
+            {items[0].images && (
+                <Image
+                    width={640}
+                    ratio={2}
+                    {...items[0].images[0]}
+                />
+            )}
+            {documentToReactComponents(items[0].text)}
         </div>
     );
 }
