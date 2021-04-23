@@ -1,5 +1,6 @@
-import { ContentfulClientApi, SiteContent } from '../../global';
-import siteContentParser from './parser/siteContentParser';
+import { ContentfulClientApi } from 'contentful';
+import { SiteContent } from '../parser';
+import siteContentParser from '../parser/siteContentParser';
 
 const contentful = require('contentful');
 

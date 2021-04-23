@@ -1,5 +1,5 @@
 import { isObject } from '../helpers';
-import { parseRichText, parseImage } from './parserLib';
+import { parseRichText, parseImage } from './parserHelpers';
 
 
 function projectParser(item) {

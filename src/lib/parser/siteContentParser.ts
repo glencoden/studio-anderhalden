@@ -1,16 +1,24 @@
+import { SiteContent } from './index';
+import { EntryCollection } from 'contentful';
 import { isObject } from '../helpers';
 import projectParser from './projectParser';
 import infoBlockParser from './infoBlockParser';
 import configParser from './configParser';
 
-const ItemIds = {
+const ItemIds: { [key: string]: string } = {
     PROJECT: 'projekt',
     INFO_BLOCK: 'infoBlock',
     CONFIG: 'config'
 };
 
 
-function siteContentParser(raw) {
+function siteContentParser(raw: EntryCollection<unknown>): SiteContent {
+    const siteContent: SiteContent = {
+        projects: [],
+        infoBlocks: [],
+        config: null
+    };
+
     if (
         !isObject(raw)
         || !Array.isArray(raw.items)
@@ -18,14 +26,8 @@ function siteContentParser(raw) {
         || !Array.isArray(raw.includes.Asset)
     ) {
         console.warn('unknown raw data', raw);
-        return;
+        return siteContent;
     }
-
-    const siteContent = {
-        projects: [],
-        infoBlocks: [],
-        config: null
-    };
 
     raw.items.forEach(item => {
         if (!isObject(item)) {
@@ -62,8 +64,7 @@ function siteContentParser(raw) {
         }
     });
 
-    console.log(siteContent);// TODO remove dev code
-    return raw;
+    return siteContent;
 }
 
 export default siteContentParser;

@@ -1,5 +1,5 @@
-import { State, ActionTypesType, PagesType, Action, Actions } from '../../global';
-import { apiService } from '../lib/apiService';
+import { State, ActionTypesType, PagesType, Action, Actions } from './index';
+import { apiService } from '../lib/services/apiService';
 
 
 // enums

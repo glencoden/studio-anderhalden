@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import styles from './App.module.css';
 import { initState, reducer, actions } from './store/store';
-import useAsyncReducer from './hooks/useAsyncReducer';
+import useAsyncReducer from './lib/hooks/useAsyncReducer';
 
 import Navigation from './components/Navigation/Navigation';
 import Info from './components/Info/Info';
@@ -19,7 +19,7 @@ function App(): JSX.Element {
     return (
         <div className={styles.App}>
             <Navigation navElement={'Grafik'} />
-            <Info items={state.siteContent?.items} />
+            <Info items={state.siteContent?.infoBlocks} />
         </div>
     );
 }
