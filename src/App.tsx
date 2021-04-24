@@ -18,7 +18,7 @@ function App(): JSX.Element {
 
     return (
         <div className={styles.App}>
-            <Navigation navElement={'Grafik'} />
+            <Navigation navElements={[ 'Grafik', 'Info + Kontakt' ]} />
             <Info items={state.siteContent?.infoBlocks} />
         </div>
     );

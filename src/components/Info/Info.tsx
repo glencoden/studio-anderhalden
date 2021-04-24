@@ -4,7 +4,7 @@ import Image from '../Image/Image';
 
 
 function Info({ items }: any): JSX.Element {
-    if (!items) {
+    if (!items || !items.length) {
         return <div />;
     }
 

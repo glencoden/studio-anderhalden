@@ -1,10 +1,18 @@
 html {
     --black: #000;
-    --grey: #BDBDBD;
-    --light-grey: #F5F5F5;
+    --grey: #999;
+    --lightgrey: #E5E5E5;
     --white: #FFF;
-
     --animation-time: 0.6s;
+    --background-color: var(--white);
+    --font-size-small: 14px;
+    --font-size-medium: 16px;
+    --font-size-large: 20px;
+    --padding-small: 5px;
+    --padding-medium: 10px;
+    --padding-large: 20px;
+    --image-fade-in-time: 0.2s;
+    --button-hover-transition-time: 0.15s;
 }
 
 @font-face {

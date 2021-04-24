@@ -1,25 +1,27 @@
+import { ParsedImage } from './index';
 import { isObject } from '../helpers';
+import { EntryFields } from 'contentful';
 
-export function parseRichText(entry) {
+export function parseRichText(entry: EntryFields.Object): EntryFields.RichText | null {
     if (
         !isObject(entry)
         || !entry.hasOwnProperty('content')
         || !entry.hasOwnProperty('nodeType')
     ) {
         console.warn('unknown rich text entry', entry);
-        return;
+        return null;
     }
     return entry;
 }
 
-export function parseImage(entry) {
+export function parseImage(entry: EntryFields.Object): ParsedImage | null {
     if (
         !isObject(entry)
         || !isObject(entry.sys)
         || !isObject(entry.fields)
     ) {
         console.warn('unknown image entry', entry);
-        return;
+        return null;
     }
     return {
         id: entry.sys.id,

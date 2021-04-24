@@ -1,4 +1,4 @@
-import { ContentfulClientApi } from 'contentful';
+import { ContentfulClientApi, EntryCollection } from 'contentful';
 import { SiteContent } from '../parser';
 import siteContentParser from '../parser/siteContentParser';
 
@@ -20,7 +20,7 @@ class ApiService {
 
     getSiteContent(): Promise<SiteContent> {
         return this._client.getEntries()
-            .then(response => siteContentParser(response));
+            .then((response: EntryCollection<any>) => siteContentParser(response));
     }
 
     getImageUrl({ id, width, height }: { id: string, width: number, height: number }): Promise<string> {

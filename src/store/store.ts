@@ -1,5 +1,6 @@
 import { State, ActionTypesType, PagesType, Action, Actions } from './index';
 import { apiService } from '../lib/services/apiService';
+import { applyStylesFromConfig } from '../lib/helpers';
 
 
 // enums
@@ -19,7 +20,11 @@ export const Pages: PagesType = {
 // initial state
 
 export const initState = {
-    siteContent: null,
+    siteContent: {
+        projects: [],
+        infoBlocks: [],
+        config: null
+    },
     selectedPage: Pages.HOME,
     selectedProjectId: ''
 };
@@ -42,7 +47,10 @@ export function reducer(state: State, action: Action): State {
 function getSiteContent(): Promise<Action> {
     return new Promise(resolve => {
         apiService.getSiteContent()
-            .then(siteContent => resolve({ type: ActionTypes.GET_SITE_CONTENT, payload: siteContent }));
+            .then(siteContent => {
+                applyStylesFromConfig(siteContent.config);
+                resolve({ type: ActionTypes.GET_SITE_CONTENT, payload: siteContent });
+            });
     });
 }
 

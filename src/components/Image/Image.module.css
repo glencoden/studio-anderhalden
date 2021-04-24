@@ -1,6 +1,6 @@
 .ImageBox {
     position: relative;
-    transition: opacity 0.2s ease;
+    transition: opacity var(--image-fade-in-time) ease;
     background-color: var(--light-grey);
     overflow: hidden;
 }

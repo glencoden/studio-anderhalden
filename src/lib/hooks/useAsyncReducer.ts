@@ -1,6 +1,7 @@
-import { AsyncDispatch } from './index';
 import { State, Reducer } from '../../store';
 import { Dispatch, useMemo, useReducer } from 'react';
+
+export type AsyncDispatch<T> = Dispatch<T | Promise<T>>
 
 function wrapAsync<T>(dispatch: Dispatch<T>): AsyncDispatch<T> {
     return (action: T | Promise<T>) => {

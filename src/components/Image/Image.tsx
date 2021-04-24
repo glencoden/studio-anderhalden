@@ -8,6 +8,8 @@ interface ImageProps extends ParsedImage {
     ratio: number;
 }
 
+const imageLoadingTimeout = 5;
+
 
 function Image({ width, ratio, id, title, url }: ImageProps): JSX.Element {
     const height = Math.round(width / ratio);
@@ -20,6 +22,8 @@ function Image({ width, ratio, id, title, url }: ImageProps): JSX.Element {
     useEffect(() => {
         apiService.getImageUrl({ id, width, height })
             .then(url => setSrc(url));
+        const timeoutId = setTimeout(() => setLoaded(true), imageLoadingTimeout * 1000);
+        return () => clearTimeout(timeoutId);
     }, [ id, width, height ]);
 
     return (

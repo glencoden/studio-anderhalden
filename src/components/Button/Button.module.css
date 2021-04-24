@@ -1,0 +1,22 @@
+.Button {
+    display: inline-block;
+    font: inherit;
+    font-size: var(--font-size-large);
+    text-align: center;
+    align-items: flex-start;
+    padding: var(--padding-small);
+    border: none;
+    color: var(--black);
+    background-color: var(--background-color);
+    transition: color var(--button-hover-transition-time);
+    cursor: pointer;
+    outline: none;
+}
+
+.Button:hover {
+    color: var(--grey);
+}
+
+.active {
+    color: var(--lightgrey);
+}

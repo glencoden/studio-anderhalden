@@ -1,4 +1,4 @@
-import { SiteContent } from './index';
+import { RawEntry, SiteContent } from './index';
 import { EntryCollection } from 'contentful';
 import { isObject } from '../helpers';
 import projectParser from './projectParser';
@@ -12,7 +12,7 @@ const ItemIds: { [key: string]: string } = {
 };
 
 
-function siteContentParser(raw: EntryCollection<unknown>): SiteContent {
+function siteContentParser(raw: EntryCollection<RawEntry>): SiteContent {
     const siteContent: SiteContent = {
         projects: [],
         infoBlocks: [],

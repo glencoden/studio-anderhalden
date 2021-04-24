@@ -1,3 +1,4 @@
+import { RawEntry, Config } from './index';
 import { isHexColor, isObject } from '../helpers';
 
 const minAnimationTime = 0.2;
@@ -8,18 +9,27 @@ const minImageRatio = 1;
 const maxImageRatio = 2;
 
 
-function configParser(item) {
-    if (!isObject(item.fields)) {
-        console.warn('unknown config item', item);
-        return;
-    }
+function configParser(item: RawEntry): Config {
     const config = {
+        enabled: false,
         documentTitle: '',
         animationTime: 0,
         imageSize: 0,
         ratio: 0,
-        palette: {}
+        palette: {
+            black: '#000',
+            grey: '#999',
+            lightgrey: '#E5E5E5',
+            white: '#FFF'
+        }
     };
+    if (!isObject(item.fields)) {
+        console.warn('unknown config item', item);
+        return config;
+    }
+    if (typeof item.fields.configAktiv === typeof config.enabled) {
+        config.enabled = item.fields.configAktiv;
+    }
     if (typeof item.fields.websiteTitel === typeof config.documentTitle) {
         config.documentTitle = item.fields.websiteTitel;
     }
@@ -30,7 +40,7 @@ function configParser(item) {
         config.imageSize = Math.min(maxImageSize, Math.max(minImageSize, item.fields.maximaleBildgre));
     }
     if (typeof item.fields.bildSeitenverhltnis === 'string') {
-        const [ counter, denominator ] = item.fields.bildSeitenverhltnis.split(':').map(e => Number(e));
+        const [ counter, denominator ] = item.fields.bildSeitenverhltnis.split(':').map((e: any) => Number(e));
         if (!isNaN(counter) && !isNaN(denominator)) {
             config.ratio = Math.min(maxImageRatio, Math.max(minImageRatio, counter / denominator));
         }

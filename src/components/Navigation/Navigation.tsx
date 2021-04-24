@@ -1,10 +1,16 @@
+import Button from '../Button/Button';
+
 type NavigationProps = {
-    navElement: string
+    navElements: Array<string>
 };
 
-function Navigation({ navElement }: NavigationProps): JSX.Element {
+function Navigation({ navElements }: NavigationProps): JSX.Element {
     return (
-        <div>{navElement}</div>
+        <div>
+            {navElements.map((navElement, index) => (
+                <Button label={navElement} active={!!index} />
+            ))}
+        </div>
     );
 }
 
