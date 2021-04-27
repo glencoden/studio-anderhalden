@@ -1,6 +1,6 @@
 import { RawEntry, Project } from './index';
 import { EntryFields } from 'contentful';
-import { isObject } from '../helpers';
+import { isObject } from '../../helpers';
 import { parseRichText, parseImage } from './util';
 
 

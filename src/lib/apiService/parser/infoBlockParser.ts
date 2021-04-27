@@ -1,5 +1,5 @@
 import { RawEntry, InfoBlock } from './index';
-import { isObject } from '../helpers';
+import { isObject } from '../../helpers';
 import { parseRichText, parseImage } from './util';
 import { EntryFields } from 'contentful';
 

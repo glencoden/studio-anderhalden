@@ -1,5 +1,5 @@
 import { State, ActionTypesType, PagesType, Action, Actions } from './index';
-import { apiService } from '../lib/services/apiService';
+import { apiService } from '../lib/apiService/apiService';
 import { applyStylesFromConfig } from '../lib/helpers';
 
 

@@ -1,6 +1,6 @@
 import { RawEntry, SiteContent } from './index';
 import { EntryCollection } from 'contentful';
-import { isObject } from '../helpers';
+import { isObject } from '../../helpers';
 import projectParser from './projectParser';
 import infoBlockParser from './infoBlockParser';
 import configParser from './configParser';

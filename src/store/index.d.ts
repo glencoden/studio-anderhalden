@@ -1,4 +1,4 @@
-import { SiteContent } from '../lib/parser/siteContentParser';
+import { SiteContent } from '../lib/apiService/parser/siteContentParser';
 import { ActionTypes, Pages } from './store';
 
 const actionTypes = Object.values(ActionTypes) as const;

@@ -1,5 +1,5 @@
 import { ParsedImage } from './index';
-import { isObject } from '../helpers';
+import { isObject } from '../../helpers';
 import { EntryFields } from 'contentful';
 
 export function parseRichText(entry: EntryFields.Object): EntryFields.RichText | null {

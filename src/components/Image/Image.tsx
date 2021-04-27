@@ -1,7 +1,7 @@
-import { ParsedImage } from '../../lib/parser';
+import { ParsedImage } from '../../lib/apiService/parser';
 import { useRef, useState, useEffect } from 'react';
 import styles from './Image.module.css';
-import { apiService } from '../../lib/services/apiService';
+import { apiService } from '../../lib/apiService/apiService';
 
 interface ImageProps extends ParsedImage {
     width: number;
@@ -21,10 +21,14 @@ function Image({ width, ratio, id, title, url }: ImageProps): JSX.Element {
 
     useEffect(() => {
         apiService.getImageUrl({ id, width, height })
-            .then(url => setSrc(url));
+            .then(imageUrl => setSrc(imageUrl))
+            .catch(err => {
+                console.warn('no image url', err);
+                setSrc(url);
+            });
         const timeoutId = setTimeout(() => setLoaded(true), imageLoadingTimeout * 1000);
         return () => clearTimeout(timeoutId);
-    }, [ id, width, height ]);
+    }, [ id, width, height, url ]);
 
     return (
         <div
@@ -35,14 +39,16 @@ function Image({ width, ratio, id, title, url }: ImageProps): JSX.Element {
                 opacity: loaded ? 1 : 0
             }}
         >
-            <img
-                className={styles.Image}
-                ref={imageRef}
-                src={src}
-                alt={title}
-                onLoad={() => setLoaded(true)}
-                onError={() => setSrc(url)}
-            />
+            {src && (
+                <img
+                    className={styles.Image}
+                    ref={imageRef}
+                    src={src}
+                    alt={title}
+                    onLoad={() => setLoaded(true)}
+                    onError={() => setSrc(url)}
+                />
+            )}
         </div>
     );
 }
