@@ -1,23 +1,46 @@
-html {
+@font-face {
+    font-family: 'Basel Grotesk';
+    src: url('lib/fonts/Basel-Grotesk-Regular.woff2') format('woff2'), url('lib/fonts/Basel-Grotesk-Regular.woff') format('woff');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
     --black: #000;
     --grey: #999;
     --lightgrey: #E5E5E5;
     --white: #FFF;
+
     --animation-time: 0.6s;
+
+    --text-color-primary: var(--black);
+    --text-color-secondary: var(--black);
+    --link-color: var(--black);
+    --link-decoration-color: var(--grey);
+    --button-color: var(--black);
+    --button-hover-color: var(--grey);
+    --button-active-color: var(--lightgrey);
+    --logo-color: var(--black);
+    --border-color: var(--black);
     --background-color: var(--white);
+
     --font-size-small: 14px;
     --font-size-medium: 16px;
     --font-size-large: 20px;
+
     --padding-small: 5px;
     --padding-medium: 10px;
     --padding-large: 20px;
+
+    --z-front: 1000;
+    --z-middle: 100;
+    --z-back: 10;
+
     --image-fade-in-time: 0.2s;
     --button-hover-transition-time: 0.15s;
-}
-
-@font-face {
-    font-family: 'Basel Grotesk';
-    src: url('lib/fonts/Basel-Grotesk-Regular.woff2') format('woff2'), url('lib/fonts/Basel-Grotesk-Regular.woff') format('woff');
+    --curtain-offset: calc(-50vw + var(--padding-medium));
 }
 
 body {
@@ -25,4 +48,5 @@ body {
     font-family: 'Basel Grotesk', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--background-color);
 }
