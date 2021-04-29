@@ -8,6 +8,7 @@ import Curtain from './components/Curtain/Curtain';
 import Logo from './components/Logo/Logo';
 import Button from './components/Button/Button';
 import Projects from './components/Projects/Projects';
+import Info from './components/Info/Info';
 
 
 function App(): JSX.Element {
@@ -41,12 +42,16 @@ function App(): JSX.Element {
                     callback={() => asyncDispatch(actions.setPage(Pages.INFO))}
                 />
             </Navigation>
-            <Projects
-                items={siteContent.projects}
-                config={siteContent.config}
-                dispatch={asyncDispatch}
-                setProjectId={actions.setProjectId}
-            />
+            {selectedPage === Pages.PROJECTS && (
+                <Projects
+                    items={siteContent.projects}
+                    config={siteContent.config}
+                    setProjectId={projectId => asyncDispatch(actions.setProjectId(projectId))}
+                />
+            )}
+            {selectedPage === Pages.INFO && (
+                <Info items={siteContent.infoBlocks} />
+            )}
         </div>
     );
 }

@@ -6,13 +6,11 @@ type ProjectListItemProps = {
     item: Project;
     config: Config;
     callback: () => void;
-    isMobilePortrait?: boolean;
+    fixedWidth?: number;
 };
 
-const mobilePadding = 10;
 
-
-function ProjectListItem({ item, config, callback, isMobilePortrait }: ProjectListItemProps): JSX.Element {
+function ProjectListItem({ item, config, callback, fixedWidth }: ProjectListItemProps): JSX.Element {
     if (!item.thumbnail) {
         return (
             <div className={styles.ProjectListItem}>no thumbnail</div>
@@ -24,18 +22,16 @@ function ProjectListItem({ item, config, callback, isMobilePortrait }: ProjectLi
 
     let width = 0;
 
-    if (isMobilePortrait) {
-        width = window.innerWidth - (2 * mobilePadding);
+    if (item.thumbnail.file.width < item.thumbnail.file.height) {
+        ratio = 1 / ratio;
+    }
 
-        if (item.thumbnail.file.width < item.thumbnail.file.height) {
-            ratio = 1 / ratio;
-        }
+    if (fixedWidth) {
+        width = fixedWidth;
     } else {
         width = Math.round(Math.min(imageSize, (window.innerWidth / 2)));
-
-        if (item.thumbnail.file.width < item.thumbnail.file.height) {
-            width = Math.round(width / ratio);
-            ratio = 1 / ratio;
+        if (ratio < 1) {
+            width = Math.round(width * ratio);
         }
     }
 
