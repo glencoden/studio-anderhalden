@@ -11,7 +11,7 @@ interface ImageProps extends ParsedImage {
 const imageLoadingTimeout = 5;
 
 
-function Image({ width, ratio, id, title, url }: ImageProps): JSX.Element {
+function Image({ width, ratio, id, title, file }: ImageProps): JSX.Element {
     const height = Math.round(width / ratio);
 
     const imageRef = useRef(null);
@@ -24,11 +24,11 @@ function Image({ width, ratio, id, title, url }: ImageProps): JSX.Element {
             .then(imageUrl => setSrc(imageUrl))
             .catch(err => {
                 console.warn('no image url', err);
-                setSrc(url);
+                setSrc(file.url);
             });
         const timeoutId = setTimeout(() => setLoaded(true), imageLoadingTimeout * 1000);
         return () => clearTimeout(timeoutId);
-    }, [ id, width, height, url ]);
+    }, [ id, width, height, file.url ]);
 
     return (
         <div
@@ -46,7 +46,7 @@ function Image({ width, ratio, id, title, url }: ImageProps): JSX.Element {
                     src={src}
                     alt={title}
                     onLoad={() => setLoaded(true)}
-                    onError={() => setSrc(url)}
+                    onError={() => setSrc(file.url)}
                 />
             )}
         </div>

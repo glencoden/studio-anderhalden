@@ -26,3 +26,19 @@ export function applyStylesFromConfig(config: Config): void {
     // @ts-ignore
     document.documentElement.style.setProperty('--animation-time', config.animationTime);
 }
+
+export function isPortrait(): boolean {
+    let isPortrait = window.innerWidth < window.innerHeight;
+    if (isObject(window.screen.orientation)) {
+        const { type } = window.screen.orientation;
+        isPortrait = typeof type === 'string' && type.includes('portrait');
+    }
+    return isPortrait;
+}
+
+export function isMobile(): boolean {
+    if (isPortrait()) {
+        return window.innerWidth < 620;
+    }
+    return window.innerWidth < 820;
+}

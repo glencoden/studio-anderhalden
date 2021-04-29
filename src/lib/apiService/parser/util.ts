@@ -26,6 +26,10 @@ export function parseImage(entry: EntryFields.Object): ParsedImage | null {
     return {
         id: entry.sys.id,
         title: entry.fields.title,
-        url: isObject(entry.fields.file) ? entry.fields.file.url : ''
+        file: {
+            url: isObject(entry.fields.file) ? entry.fields.file.url : '',
+            width: isObject(entry.fields.file?.details?.image) ? entry.fields.file.details.image.width : 0,
+            height: isObject(entry.fields.file?.details?.image) ? entry.fields.file.details.image.height : 0
+        }
     }
 }

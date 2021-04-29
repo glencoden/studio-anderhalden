@@ -5,17 +5,21 @@ import { parseRichText, parseImage } from './util';
 
 
 function projectParser(item: RawEntry) {
-    if (!isObject(item.fields)) {
+    if (!isObject(item.fields) || !isObject(item.sys)) {
         console.warn('unknown project item', item);
         return;
     }
     const project: Project = {
+        id: '',
         title: '',
         text: null,
         footnote: null,
         thumbnail: null,
         images: []
     };
+    if (typeof item.sys.id === typeof project.id) {
+        project.id = item.sys.id;
+    }
     if (typeof item.fields.titel === typeof project.title) {
         project.title = item.fields.titel;
     }

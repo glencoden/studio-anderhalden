@@ -12,8 +12,7 @@ import Projects from './components/Projects/Projects';
 
 function App(): JSX.Element {
     const { state, asyncDispatch } = useAsyncReducer(reducer, initState);
-    const { selectedPage, selectedProjectId } = state;
-    const { projects, infoBlocks, config } = state.siteContent;
+    const { siteContent, selectedPage, selectedProjectId } = state;
 
     useEffect(() => {
         asyncDispatch(actions.getSiteContent());
@@ -26,7 +25,7 @@ function App(): JSX.Element {
             <Curtain open={selectedPage !== Pages.HOME} />
             <Logo>
                 <Button
-                    label={config ? config.documentTitle : 'Studio Anderhalden'}
+                    label={siteContent.config ? siteContent.config.documentTitle : 'Studio Anderhalden'}
                     callback={() => asyncDispatch(actions.setPage(Pages.HOME))}
                 />
             </Logo>
@@ -42,7 +41,12 @@ function App(): JSX.Element {
                     callback={() => asyncDispatch(actions.setPage(Pages.INFO))}
                 />
             </Navigation>
-            <Projects items={projects} />
+            <Projects
+                items={siteContent.projects}
+                config={siteContent.config}
+                dispatch={asyncDispatch}
+                setProjectId={actions.setProjectId}
+            />
         </div>
     );
 }

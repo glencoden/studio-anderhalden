@@ -5,10 +5,15 @@ type RawEntry = Entry<Object<{ [key: string]: any }>>
 interface ParsedImage {
     id: string;
     title: string;
-    url: string;
+    file: {
+        url: string;
+        width: number;
+        height: number;
+    }
 }
 
-export type Project = {
+type Project = {
+    id: string;
     title: string;
     text: EntryFields.RichText | null;
     footnote: EntryFields.RichText | null;
@@ -16,12 +21,12 @@ export type Project = {
     images: Array<ParsedImage>;
 };
 
-export type InfoBlock = {
+type InfoBlock = {
     text: EntryFields.RichText | null;
     images: Array<ParsedImage>;
 };
 
-export type Config = {
+type Config = {
     enabled: boolean;
     documentTitle: string;
     animationTime: number;
