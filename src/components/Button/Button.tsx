@@ -7,6 +7,7 @@ type ButtonProps = {
     callback?: () => void;
 };
 
+
 function Button({ label, className, active, callback = () => {} }: ButtonProps): JSX.Element {
     const classNames = [ styles.Button ];
     if (className) {

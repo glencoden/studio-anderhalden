@@ -4,6 +4,7 @@ type CurtainProps = {
     open: boolean;
 };
 
+
 function Curtain({ open }: CurtainProps): JSX.Element {
     return (
         <>

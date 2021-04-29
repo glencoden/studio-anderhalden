@@ -1,0 +1,9 @@
+.Navigation {
+    position: fixed;
+    left: var(--padding-large);
+    bottom: var(--padding-medium);
+    z-index: var(--z-front);
+    display: grid;
+    grid-row-gap: var(--space);
+    justify-items: start;
+}

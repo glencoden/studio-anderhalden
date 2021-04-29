@@ -11,6 +11,7 @@
     transition: color var(--button-hover-transition-time);
     cursor: pointer;
     outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .Button:hover {

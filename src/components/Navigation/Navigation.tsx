@@ -1,15 +1,13 @@
-import Button from '../Button/Button';
+import styles from './Navigation.module.css';
 
 type NavigationProps = {
-    navElements: Array<string>
+    children: JSX.Element | Array<JSX.Element>
 };
 
-function Navigation({ navElements }: NavigationProps): JSX.Element {
+function Navigation({ children }: NavigationProps): JSX.Element {
     return (
-        <div>
-            {navElements.map((navElement, index) => (
-                <Button label={navElement} active={!!index} />
-            ))}
+        <div className={styles.Navigation}>
+            {children}
         </div>
     );
 }

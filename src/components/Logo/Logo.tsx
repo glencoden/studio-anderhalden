@@ -4,6 +4,7 @@ type LogoProps = {
     children: JSX.Element;
 };
 
+
 function Logo({ children }: LogoProps): JSX.Element {
     return (
         <div className={styles.Logo}>

@@ -8,7 +8,7 @@ interface ParsedImage {
     url: string;
 }
 
-type Project = {
+export type Project = {
     title: string;
     text: EntryFields.RichText | null;
     footnote: EntryFields.RichText | null;
@@ -16,12 +16,12 @@ type Project = {
     images: Array<ParsedImage>;
 };
 
-type InfoBlock = {
+export type InfoBlock = {
     text: EntryFields.RichText | null;
     images: Array<ParsedImage>;
 };
 
-type Config = {
+export type Config = {
     enabled: boolean;
     documentTitle: string;
     animationTime: number;
