@@ -1,4 +1,21 @@
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    5% { transform: rotate(-5deg); }
+    10% { transform: rotate(0deg); }
+    80% { transform: rotate(0deg); }
+    85% { transform: rotate(5deg); }
+    95% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
 .Logo {
-    font-size: var(--font-size-large);
-    color: var(--black);
+    position: fixed;
+    left: var(--padding-large);
+    top: var(--padding-medium);
+    z-index: var(--z-front);
+    animation: none;
+}
+
+.Logo:hover {
+    animation: wiggle var(--animation-time);
 }

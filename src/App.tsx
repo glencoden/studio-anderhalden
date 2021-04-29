@@ -6,6 +6,7 @@ import useAsyncReducer from './lib/hooks/useAsyncReducer';
 import Navigation from './components/Navigation/Navigation';
 import Curtain from './components/Curtain/Curtain';
 import Logo from './components/Logo/Logo';
+import Button from './components/Button/Button';
 
 
 function App(): JSX.Element {
@@ -21,7 +22,12 @@ function App(): JSX.Element {
 
     return (
         <div className={styles.App}>
-            <Logo label={config ? config.documentTitle : 'Studio Anderhalden'} />
+            <Logo>
+                <Button
+                    label={config ? config.documentTitle : 'Studio Anderhalden'}
+                    callback={() => asyncDispatch(actions.setPage(Pages.HOME))}
+                />
+            </Logo>
             <Curtain open={selectedPage !== Pages.HOME} />
             <Navigation navElements={[ 'Grafik', 'Info + Kontakt' ]} />
         </div>

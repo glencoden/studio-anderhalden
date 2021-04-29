@@ -1,4 +1,4 @@
-import { State, ActionTypesType, PagesType, Action, Actions } from './index';
+import { Page, State, ActionTypesType, PagesType, Action, Actions } from './index';
 import { apiService } from '../lib/apiService/apiService';
 import { applyStylesFromConfig } from '../lib/helpers';
 
@@ -6,7 +6,9 @@ import { applyStylesFromConfig } from '../lib/helpers';
 // enums
 
 export const ActionTypes: ActionTypesType = {
-    GET_SITE_CONTENT: 'get-site-content'
+    GET_SITE_CONTENT: 'get-site-content',
+    SET_PAGE: 'set-page',
+    SET_PROJECT_ID: 'set-project-id'
 };
 
 export const Pages: PagesType = {
@@ -36,6 +38,10 @@ export function reducer(state: State, action: Action): State {
     switch (action.type) {
         case ActionTypes.GET_SITE_CONTENT:
             return { ...state, siteContent: action.payload };
+        case ActionTypes.SET_PAGE:
+            return { ...state, selectedPage: action.payload };
+        case ActionTypes.SET_PROJECT_ID:
+            return { ...state, selectedProjectId: action.payload };
         default:
             return state;
     }
@@ -54,6 +60,16 @@ function getSiteContent(): Promise<Action> {
     });
 }
 
+function setPage(page: Page): Action {
+    return { type: ActionTypes.SET_PAGE, payload: page };
+}
+
+function setProjectId(projectId: string): Action {
+    return { type: ActionTypes.SET_PROJECT_ID, payload: projectId };
+}
+
 export const actions: Actions = {
-    getSiteContent
+    getSiteContent,
+    setPage,
+    setProjectId
 };

@@ -1,11 +1,13 @@
+import styles from './Logo.module.css';
+
 type LogoProps = {
-    label: string;
+    children: JSX.Element;
 };
 
-function Logo({ label }: LogoProps): JSX.Element {
+function Logo({ children }: LogoProps): JSX.Element {
     return (
-        <div>
-            {label}
+        <div className={styles.Logo}>
+            {children}
         </div>
     );
 }
