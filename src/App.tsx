@@ -16,7 +16,7 @@ function App(): JSX.Element {
     const { siteContent, selectedPage, selectedProjectId } = state;
 
     useEffect(() => {
-        asyncDispatch(actions.getSiteContent());
+        asyncDispatch(actions.getSiteContent()); // TODO refresh
     }, [ asyncDispatch ]);
 
     console.log('app render state', state);// TODO remove dev code

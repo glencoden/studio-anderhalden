@@ -1,0 +1,63 @@
+.RichText {
+    color: var(--text-color-primary);
+}
+
+.RichText h1,
+.RichText h2,
+.RichText h3,
+.RichText h4,
+.RichText h5,
+.RichText h6 {
+    color: var(--text-color-primary);
+}
+
+.RichText p {
+    color: var(--text-color-primary);
+}
+
+.RichText a {
+    color: var(--link-color);
+    text-decoration-color: var(--link-decoration-color);
+}
+
+.mediumSize {
+    font-size: var(--font-size-medium);
+}
+
+.mediumSize h1,
+.mediumSize h2,
+.mediumSize h3,
+.mediumSize h4,
+.mediumSize h5,
+.mediumSize h6 {
+    font-size: var(--font-size-large);
+}
+
+.mediumSize p {
+    font-size: var(--font-size-medium);
+}
+
+.mediumSize a {
+    font-size: var(--font-size-medium);
+}
+
+.smallSize {
+    font-size: var(--font-size-small);
+}
+
+.smallSize h1,
+.smallSize h2,
+.smallSize h3,
+.smallSize h4,
+.smallSize h5,
+.smallSize h6 {
+    font-size: var(--font-size-medium);
+}
+
+.smallSize p {
+    font-size: var(--font-size-small);
+}
+
+.smallSize a {
+    font-size: var(--font-size-small);
+}
