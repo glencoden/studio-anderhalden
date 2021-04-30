@@ -9,7 +9,7 @@ type PageBoxProps = {
     children: JSX.Element;
 };
 
-let prevSelected = '';
+let prevSelected: Page | string = '';
 
 
 function PageBox({ page, target, selected, children }: PageBoxProps): JSX.Element {
