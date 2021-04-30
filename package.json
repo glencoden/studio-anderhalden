@@ -25,7 +25,7 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "pre-deploy-dev": "rm -rf docs && cp -r build docs"
+        "pre-deploy": "rm -rf docs && cp -r build docs"
     },
     "eslintConfig": {
         "extends": [
