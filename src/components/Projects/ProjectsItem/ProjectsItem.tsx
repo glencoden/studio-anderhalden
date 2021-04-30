@@ -1,5 +1,6 @@
 import { Project, Config } from '../../../lib/apiService/parser';
 import styles from './ProjectsItem.module.css';
+import { getStyleVariable, numberFromPx } from '../../../lib/helpers';
 import Image from '../../Image/Image';
 
 type ProjectsItemProps = {
@@ -9,9 +10,6 @@ type ProjectsItemProps = {
     fixedWidth?: number;
 };
 
-const defaultWidth = 640; // TODO get from config
-const defaultRatio = 1.6; // TODO get from config
-
 
 function ProjectsItem({ item, config, callback, fixedWidth }: ProjectsItemProps): JSX.Element {
     if (!item.thumbnail) {
@@ -20,8 +18,8 @@ function ProjectsItem({ item, config, callback, fixedWidth }: ProjectsItemProps)
         );
     }
 
-    let imageSize = config?.imageSize || defaultWidth;
-    let ratio = config?.ratio || defaultRatio;
+    let imageSize = config?.imageSize || numberFromPx(getStyleVariable('--default-content-width'));
+    let ratio = config?.ratio || numberFromPx(getStyleVariable('--default-image-ratio'));
 
     let width = 0;
 

@@ -2,13 +2,12 @@ import { InfoBlock } from '../../../lib/apiService/parser';
 import styles from './InfoItem.module.css';
 import Image from '../../Image/Image';
 import RichText from '../../RichText/RichText';
+import { getStyleVariable, numberFromPx } from '../../../lib/helpers';
 
 type InfoItemProps = {
     item: InfoBlock;
     width: number;
 };
-
-const paddingLarge = 20; // TODO get from config
 
 
 function InfoItem({ item, width }: InfoItemProps): JSX.Element {
@@ -18,7 +17,7 @@ function InfoItem({ item, width }: InfoItemProps): JSX.Element {
             style={{ width: `${width}px` }}
         >
             {!!item.images.length && (
-                <Image width={width - (2 * paddingLarge)} ratio={1.6} {...item.images[0]} />
+                <Image width={width - (2 * numberFromPx(getStyleVariable('--padding-large')))} ratio={1.6} {...item.images[0]} />
             )}
             {item.text && (
                 <RichText entry={item.text} size="m" />

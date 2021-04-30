@@ -42,3 +42,21 @@ export function isMobile(): boolean {
     }
     return window.innerWidth < 820;
 }
+
+const styleVariables: { [key: string]: string } = {};
+
+export function getStyleVariable(name: string): string {
+    if (styleVariables[name]) {
+        return styleVariables[name];
+    }
+    const value = window.getComputedStyle(document.documentElement).getPropertyValue(name);
+    styleVariables[name] = value;
+    return value;
+}
+
+export function numberFromPx(value: string): number {
+    if (value.endsWith('px')) {
+        return Number(value.slice(0, -2));
+    }
+    return 0;
+}

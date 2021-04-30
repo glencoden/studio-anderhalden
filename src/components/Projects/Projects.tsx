@@ -1,6 +1,6 @@
 import { Project, Config } from '../../lib/apiService/parser';
 import styles from './Projects.module.css';
-import { isMobile, isPortrait } from '../../lib/helpers';
+import { getStyleVariable, isMobile, isPortrait, numberFromPx } from '../../lib/helpers';
 import ProjectsItem from './ProjectsItem/ProjectsItem';
 
 type ProjectsProps = {
@@ -9,14 +9,12 @@ type ProjectsProps = {
     setProjectId: (projectId: string) => void;
 };
 
-const paddingMedium = 10; // TODO get from config
-
 
 function Projects({ items, config, setProjectId }: ProjectsProps): JSX.Element {
     let fixedWidth = 0;
 
     if (isMobile() && isPortrait()) {
-        fixedWidth = window.innerWidth - (2 * paddingMedium);
+        fixedWidth = window.innerWidth - (2 * numberFromPx(getStyleVariable('--padding-medium')));
     }
 
     return (

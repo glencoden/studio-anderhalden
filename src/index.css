@@ -43,6 +43,8 @@
     --image-fade-in-time: 0.2s;
     --button-hover-transition-time: 0.15s;
     --curtain-offset: calc(-50vw + var(--padding-medium));
+    --default-content-width: 640px;
+    --default-image-ratio: 1.6;
 }
 
 body {
