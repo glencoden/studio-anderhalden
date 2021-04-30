@@ -4,11 +4,12 @@ type ButtonProps = {
     label: string;
     className?: string;
     active?: boolean;
+    disabled?: boolean;
     callback?: () => void;
 };
 
 
-function Button({ label, className, active, callback = () => {} }: ButtonProps): JSX.Element {
+function Button({ label, className, disabled, active, callback }: ButtonProps): JSX.Element {
     const classNames = [ styles.Button ];
     if (className) {
         classNames.push(className);
@@ -16,10 +17,18 @@ function Button({ label, className, active, callback = () => {} }: ButtonProps):
     if (active) {
         classNames.push(styles.active);
     }
+    if (disabled) {
+        classNames.push(styles.disabled);
+    }
     return (
         <button
             className={classNames.join(' ')}
-            onClick={() => callback()}
+            onClick={() => {
+                if (disabled || typeof callback !== 'function') {
+                    return;
+                }
+                callback();
+            }}
         >
             {label}
         </button>

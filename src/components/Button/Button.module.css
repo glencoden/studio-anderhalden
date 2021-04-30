@@ -21,3 +21,11 @@
 .active {
     color: var(--lightgrey);
 }
+
+.disabled {
+    cursor: default;
+}
+
+.disabled:hover {
+    color: var(--black);
+}

@@ -14,6 +14,7 @@ interface ParsedImage {
 
 type Project = {
     id: string;
+    createdAt: string;
     title: string;
     text: EntryFields.RichText | null;
     footnote: EntryFields.RichText | null;

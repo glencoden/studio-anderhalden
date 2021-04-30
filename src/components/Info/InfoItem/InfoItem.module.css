@@ -1,5 +1,8 @@
 .InfoItem {
-    padding: var(--padding-medium);
-    border: 1px solid var(--border-color);
-    border-top: none;
+    padding: var(--padding-large);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.InfoItem:last-child {
+    border-bottom: none;
 }

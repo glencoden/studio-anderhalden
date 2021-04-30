@@ -39,6 +39,7 @@ function App(): JSX.Element {
                 <Button
                     label="Grafik"
                     active={curtainOpen && selectedPage === Pages.PROJECTS}
+                    disabled={!siteContent.projects.length}
                     callback={() => {
                         asyncDispatch(actions.setPage(Pages.PROJECTS));
                         setCurtainOpen(true);
@@ -47,6 +48,7 @@ function App(): JSX.Element {
                 <Button
                     label="Kontakt + Info"
                     active={curtainOpen && selectedPage === Pages.INFO}
+                    disabled={!siteContent.infoBlocks.length}
                     callback={() => {
                         asyncDispatch(actions.setPage(Pages.INFO));
                         setCurtainOpen(true);
@@ -60,12 +62,11 @@ function App(): JSX.Element {
                     setProjectId={projectId => asyncDispatch(actions.setProjectId(projectId))}
                 />
             )}
-            {selectedPage === Pages.INFO && (
-                <Info
-                    items={siteContent.infoBlocks}
-                    config={siteContent.config}
-                />
-            )}
+            <Info
+                items={siteContent.infoBlocks}
+                config={siteContent.config}
+                open={selectedPage === Pages.INFO}
+            />
         </div>
     );
 }

@@ -11,6 +11,7 @@ function projectParser(item: RawEntry) {
     }
     const project: Project = {
         id: '',
+        createdAt: new Date().toISOString(),
         title: '',
         text: null,
         footnote: null,
@@ -19,6 +20,9 @@ function projectParser(item: RawEntry) {
     };
     if (typeof item.sys.id === typeof project.id) {
         project.id = item.sys.id;
+    }
+    if (typeof item.sys.createdAt === typeof project.createdAt) {
+        project.createdAt = item.sys.createdAt;
     }
     if (typeof item.fields.titel === typeof project.title) {
         project.title = item.fields.titel;
