@@ -3,15 +3,15 @@
     display: grid;
     grid-row-gap: var(--space);
     justify-items: center;
-    margin: var(--space) 0;
+    padding: var(--space) 0;
 }
 
 .centerLine {
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     width: 50%;
-    height: 100vh;
+    height: 100%;
     border-right: 1px solid var(--border-color);
     z-index: -10;
 }

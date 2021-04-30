@@ -1,0 +1,15 @@
+.PageBox {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 200%);
+}
+
+.isTarget {
+    transform: translate(-50%, 0);
+}
+
+.isSelected {
+    position: relative;
+    transform: translate(-50%, 0);
+}

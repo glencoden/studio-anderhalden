@@ -1,6 +1,6 @@
 @keyframes close {
-    100% { width: 100%; }
-    0% { width: 0; }
+    0% { width: 100%; }
+    100% { width: 0; }
 }
 
 @keyframes open {
@@ -24,13 +24,19 @@
     transform: translateX(-50%);
     min-height: 100vh;
     padding: var(--space) 0;
+    border: none;
+    background-color: var(--background-color);
     overflow: hidden;
+}
+
+.isTransitioning {
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
 }
 
 .isClosed {
     animation: close var(--animation-time) ease;
     width: 0;
-    border: none;
 }
 
 .isOpen {

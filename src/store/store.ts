@@ -7,6 +7,7 @@ import { applyStylesFromConfig } from '../lib/helpers';
 
 export const ActionTypes: ActionTypesType = {
     GET_SITE_CONTENT: 'get-site-content',
+    SET_TARGET: 'set-target',
     SET_PAGE: 'set-page',
     SET_PROJECT_ID: 'set-project-id'
 };
@@ -27,6 +28,7 @@ export const initState = {
         infoBlocks: [],
         config: null
     },
+    targetPage: Pages.HOME,
     selectedPage: Pages.HOME,
     selectedProjectId: ''
 };
@@ -38,6 +40,8 @@ export function reducer(state: State, action: Action): State {
     switch (action.type) {
         case ActionTypes.GET_SITE_CONTENT:
             return { ...state, siteContent: action.payload };
+        case ActionTypes.SET_TARGET:
+            return { ...state, targetPage: action.payload };
         case ActionTypes.SET_PAGE:
             return { ...state, selectedPage: action.payload };
         case ActionTypes.SET_PROJECT_ID:
@@ -60,6 +64,10 @@ function getSiteContent(): Promise<Action> {
     });
 }
 
+function setTarget(target: Page): Action {
+    return { type: ActionTypes.SET_TARGET, payload: target };
+}
+
 function setPage(page: Page): Action {
     return { type: ActionTypes.SET_PAGE, payload: page };
 }
@@ -70,6 +78,7 @@ function setProjectId(projectId: string): Action {
 
 export const actions: Actions = {
     getSiteContent,
+    setTarget,
     setPage,
     setProjectId
 };

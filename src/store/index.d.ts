@@ -17,6 +17,7 @@ type PagesType = {
 
 type State = {
     siteContent: SiteContent;
+    targetPage: Page;
     selectedPage: Page;
     selectedProjectId: string;
 }

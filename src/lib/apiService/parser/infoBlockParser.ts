@@ -13,9 +13,11 @@ function infoBlockParser(item: RawEntry): InfoBlock | null {
         text: null,
         images: []
     };
-    const text = parseRichText(item.fields.text);
-    if (text) {
-        infoBlock.text = text;
+    if (item.fields.text) {
+        const richText = parseRichText(item.fields.text);
+        if (richText) {
+            infoBlock.text = richText;
+        }
     }
     if (Array.isArray(item.fields.bild)) {
         infoBlock.images = item.fields.bild.map((entry: EntryFields.Object) => parseImage(entry)).filter((entry: EntryFields.Object) => !!entry);

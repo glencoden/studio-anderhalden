@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import styles from './App.module.css';
 import { Pages, initState, reducer, actions } from './store/store';
 import useAsyncReducer from './lib/hooks/useAsyncReducer';
@@ -9,13 +9,12 @@ import Logo from './components/Logo/Logo';
 import Button from './components/Button/Button';
 import Projects from './components/Projects/Projects';
 import Info from './components/Info/Info';
+import PageBox from './components/PageBox/PageBox';
 
 
 function App(): JSX.Element {
     const { state, asyncDispatch } = useAsyncReducer(reducer, initState);
-    const { siteContent, selectedPage, selectedProjectId } = state;
-
-    const [ curtainOpen, setCurtainOpen ] = useState(false);
+    const { siteContent, targetPage, selectedPage, selectedProjectId } = state;
 
     useEffect(() => {
         asyncDispatch(actions.getSiteContent()); // TODO refresh
@@ -26,47 +25,46 @@ function App(): JSX.Element {
     return (
         <div className={selectedPage === Pages.HOME ? styles.isHome : ''}>
             <Curtain
-                open={curtainOpen}
+                open={targetPage !== Pages.HOME}
+                onOpen={() => asyncDispatch(actions.setPage(targetPage))}
                 onClose={() => asyncDispatch(actions.setPage(Pages.HOME))}
             />
             <Logo>
                 <Button
                     label={siteContent.config ? siteContent.config.documentTitle : 'Studio Anderhalden'}
-                    callback={() => setCurtainOpen(false)}
+                    cta={() => asyncDispatch(actions.setTarget(Pages.HOME))}
                 />
             </Logo>
             <Navigation>
                 <Button
                     label="Grafik"
-                    active={curtainOpen && selectedPage === Pages.PROJECTS}
+                    active={targetPage === Pages.PROJECTS}
                     disabled={!siteContent.projects.length}
-                    callback={() => {
-                        asyncDispatch(actions.setPage(Pages.PROJECTS));
-                        setCurtainOpen(true);
-                    }}
+                    cta={() => asyncDispatch(actions.setTarget(Pages.PROJECTS))}
                 />
                 <Button
                     label="Kontakt + Info"
-                    active={curtainOpen && selectedPage === Pages.INFO}
+                    active={targetPage === Pages.INFO}
                     disabled={!siteContent.infoBlocks.length}
-                    callback={() => {
-                        asyncDispatch(actions.setPage(Pages.INFO));
-                        setCurtainOpen(true);
-                    }}
+                    cta={() => asyncDispatch(actions.setTarget(Pages.INFO))}
                 />
             </Navigation>
-            {(selectedPage === Pages.HOME || selectedPage === Pages.PROJECTS) && (
+            <PageBox page={Pages.PROJECTS} target={targetPage} selected={selectedPage}>
                 <Projects
                     items={siteContent.projects}
                     config={siteContent.config}
                     setProjectId={projectId => asyncDispatch(actions.setProjectId(projectId))}
                 />
-            )}
-            <Info
-                items={siteContent.infoBlocks}
-                config={siteContent.config}
-                open={selectedPage === Pages.INFO}
-            />
+            </PageBox>
+            <PageBox page={Pages.INFO} target={targetPage} selected={selectedPage}>
+                <Info
+                    items={siteContent.infoBlocks}
+                    config={siteContent.config}
+                    open={targetPage === Pages.INFO}
+                    onOpen={() => asyncDispatch(actions.setPage(Pages.INFO))}
+                    onClose={() => asyncDispatch(actions.setPage(targetPage))}
+                />
+            </PageBox>
         </div>
     );
 }
