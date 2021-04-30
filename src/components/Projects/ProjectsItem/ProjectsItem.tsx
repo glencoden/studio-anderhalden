@@ -1,24 +1,27 @@
 import { Project, Config } from '../../../lib/apiService/parser';
-import styles from './ProjectListItem.module.css';
+import styles from './ProjectsItem.module.css';
 import Image from '../../Image/Image';
 
-type ProjectListItemProps = {
+type ProjectsItemProps = {
     item: Project;
     config: Config;
     callback: () => void;
     fixedWidth?: number;
 };
 
+const defaultWidth = 640; // TODO get from config
+const defaultRatio = 1.6; // TODO get from config
 
-function ProjectListItem({ item, config, callback, fixedWidth }: ProjectListItemProps): JSX.Element {
+
+function ProjectsItem({ item, config, callback, fixedWidth }: ProjectsItemProps): JSX.Element {
     if (!item.thumbnail) {
         return (
-            <div className={styles.ProjectListItem}>no thumbnail</div>
+            <div className={styles.ProjectsItem}>no thumbnail</div>
         );
     }
 
-    let imageSize = config?.imageSize || 640;
-    let ratio = config?.ratio || 1.6;
+    let imageSize = config?.imageSize || defaultWidth;
+    let ratio = config?.ratio || defaultRatio;
 
     let width = 0;
 
@@ -37,7 +40,7 @@ function ProjectListItem({ item, config, callback, fixedWidth }: ProjectListItem
 
     return (
         <div
-            className={styles.ProjectListItem}
+            className={styles.ProjectsItem}
             title={item.title}
             onClick={() => callback()}
         >
@@ -50,4 +53,4 @@ function ProjectListItem({ item, config, callback, fixedWidth }: ProjectListItem
     );
 }
 
-export default ProjectListItem;
+export default ProjectsItem;

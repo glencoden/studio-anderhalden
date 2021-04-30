@@ -1,0 +1,5 @@
+.InfoItem {
+    padding: var(--padding-medium);
+    border: 1px solid var(--border-color);
+    border-top: none;
+}

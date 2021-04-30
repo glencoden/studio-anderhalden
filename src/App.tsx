@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './App.module.css';
 import { Pages, initState, reducer, actions } from './store/store';
 import useAsyncReducer from './lib/hooks/useAsyncReducer';
@@ -15,6 +15,8 @@ function App(): JSX.Element {
     const { state, asyncDispatch } = useAsyncReducer(reducer, initState);
     const { siteContent, selectedPage, selectedProjectId } = state;
 
+    const [ curtainOpen, setCurtainOpen ] = useState(false);
+
     useEffect(() => {
         asyncDispatch(actions.getSiteContent()); // TODO refresh
     }, [ asyncDispatch ]);
@@ -22,27 +24,36 @@ function App(): JSX.Element {
     console.log('app render state', state);// TODO remove dev code
 
     return (
-        <div className={styles.App}>
-            <Curtain open={selectedPage !== Pages.HOME} />
+        <div className={selectedPage === Pages.HOME ? styles.isHome : ''}>
+            <Curtain
+                open={curtainOpen}
+                onClose={() => asyncDispatch(actions.setPage(Pages.HOME))}
+            />
             <Logo>
                 <Button
                     label={siteContent.config ? siteContent.config.documentTitle : 'Studio Anderhalden'}
-                    callback={() => asyncDispatch(actions.setPage(Pages.HOME))}
+                    callback={() => setCurtainOpen(false)}
                 />
             </Logo>
             <Navigation>
                 <Button
                     label="Grafik"
-                    active={selectedPage === Pages.PROJECTS}
-                    callback={() => asyncDispatch(actions.setPage(Pages.PROJECTS))}
+                    active={curtainOpen && selectedPage === Pages.PROJECTS}
+                    callback={() => {
+                        asyncDispatch(actions.setPage(Pages.PROJECTS));
+                        setCurtainOpen(true);
+                    }}
                 />
                 <Button
                     label="Kontakt + Info"
-                    active={selectedPage === Pages.INFO}
-                    callback={() => asyncDispatch(actions.setPage(Pages.INFO))}
+                    active={curtainOpen && selectedPage === Pages.INFO}
+                    callback={() => {
+                        asyncDispatch(actions.setPage(Pages.INFO));
+                        setCurtainOpen(true);
+                    }}
                 />
             </Navigation>
-            {selectedPage === Pages.PROJECTS && (
+            {(selectedPage === Pages.HOME || selectedPage === Pages.PROJECTS) && (
                 <Projects
                     items={siteContent.projects}
                     config={siteContent.config}
@@ -50,7 +61,10 @@ function App(): JSX.Element {
                 />
             )}
             {selectedPage === Pages.INFO && (
-                <Info items={siteContent.infoBlocks} />
+                <Info
+                    items={siteContent.infoBlocks}
+                    config={siteContent.config}
+                />
             )}
         </div>
     );

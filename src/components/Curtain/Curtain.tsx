@@ -2,10 +2,12 @@ import styles from './Curtain.module.css';
 
 type CurtainProps = {
     open: boolean;
+    onOpen?: () => void;
+    onClose?: () => void;
 };
 
 
-function Curtain({ open }: CurtainProps): JSX.Element {
+function Curtain({ open, onOpen, onClose }: CurtainProps): JSX.Element {
     return (
         <>
             <div
@@ -15,6 +17,19 @@ function Curtain({ open }: CurtainProps): JSX.Element {
             <div
                 className={`${styles.Curtain} ${styles.right}`}
                 style={{ [open ? 'transform' : '']: 'translateX(0)' }}
+                onTransitionEnd={() => {
+                    if (open) {
+                        if (typeof onOpen !== 'function') {
+                            return;
+                        }
+                        onOpen();
+                    } else {
+                        if (typeof onClose !== 'function') {
+                            return;
+                        }
+                        onClose();
+                    }
+                }}
             />
         </>
     );

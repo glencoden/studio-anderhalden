@@ -1,7 +1,7 @@
 import { Project, Config } from '../../lib/apiService/parser';
 import styles from './Projects.module.css';
 import { isMobile, isPortrait } from '../../lib/helpers';
-import ProjectListItem from './ProjectListItem/ProjectListItem';
+import ProjectsItem from './ProjectsItem/ProjectsItem';
 
 type ProjectsProps = {
     items: Array<Project>;
@@ -9,21 +9,21 @@ type ProjectsProps = {
     setProjectId: (projectId: string) => void;
 };
 
-const mobilePadding = 10;
+const paddingMedium = 10; // TODO get from config
 
 
 function Projects({ items, config, setProjectId }: ProjectsProps): JSX.Element {
     let fixedWidth = 0;
 
     if (isMobile() && isPortrait()) {
-        fixedWidth = window.innerWidth - (2 * mobilePadding);
+        fixedWidth = window.innerWidth - (2 * paddingMedium);
     }
 
     return (
         <div className={styles.Projects}>
             <div className={styles.centerLine} />
             {items.map((item, index) => (
-                <ProjectListItem
+                <ProjectsItem
                     key={index}
                     item={item}
                     config={config}
