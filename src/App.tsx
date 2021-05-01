@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import styles from './App.module.css';
-import { Pages, initState, reducer, actions } from './store/store';
+import cx from 'classnames';
 import useAsyncReducer from './lib/hooks/useAsyncReducer';
+import { Pages, initState, reducer, actions } from './store/store';
+import { isMobile } from './lib/helpers';
 
 import Navigation from './components/Navigation/Navigation';
 import Curtain from './components/Curtain/Curtain';
@@ -10,34 +12,27 @@ import Button from './components/Button/Button';
 import Projects from './components/Projects/Projects';
 import Info from './components/Info/Info';
 import PageBox from './components/PageBox/PageBox';
-import { isMobile } from './lib/helpers';
 
 
 function App(): JSX.Element {
     const { state, asyncDispatch } = useAsyncReducer(reducer, initState);
     const { siteContent, targetPage, selectedPage, selectedProjectId } = state;
 
-    useEffect(() => {
-        asyncDispatch(actions.getSiteContent()); // TODO refresh
-    }, [ asyncDispatch ]);
+    useEffect(() => asyncDispatch(actions.getSiteContent()), [ asyncDispatch ]);
 
     const isMobileNav = (targetPage !== Pages.HOME || selectedPage !== Pages.HOME) && isMobile();
-    let mobileNavIndex = -1;
-    if (isMobileNav) {
-        mobileNavIndex = targetPage === Pages.INFO ? 0 : 1;
-    }
 
     console.log('app render state', state);// TODO remove dev code
 
     return (
-        <div className={selectedPage === Pages.HOME ? styles.isHome : ''}>
+        <div className={cx(styles.App, { [styles.isHome]: selectedPage === Pages.HOME })}>
             <Curtain
                 open={targetPage !== Pages.HOME}
                 onOpen={() => asyncDispatch(actions.setPage(targetPage))}
                 onClose={() => asyncDispatch(actions.setPage(Pages.HOME))}
             />
 
-            <Navigation mobileNavIndex={mobileNavIndex}>
+            <Navigation mobileNavIndex={isMobileNav ? (targetPage === Pages.INFO ? 0 : 1) : -1}>
                 <Button
                     label={isMobileNav ? 'x' : 'Grafik'}
                     active={targetPage === Pages.PROJECTS}

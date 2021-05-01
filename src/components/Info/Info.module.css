@@ -23,7 +23,7 @@
     left: 50%;
     transform: translateX(-50%);
     min-height: 100vh;
-    padding: var(--space) 0;
+    padding: var(--padding-medium) 0;
     border: none;
     background-color: var(--background-color);
     overflow: hidden;
@@ -44,4 +44,10 @@
     width: 100%;
     border-left: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .infoCurtain {
+        padding: var(--space) 0;
+    }
 }
