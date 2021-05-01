@@ -1,14 +1,32 @@
 import styles from './Navigation.module.css';
+import cx from 'classnames';
 
 type NavigationProps = {
-    children: JSX.Element | Array<JSX.Element>
+    mobileNavIndex?: number;
+    children: JSX.Element | Array<JSX.Element>;
 };
 
-function Navigation({ children }: NavigationProps): JSX.Element {
+
+function Navigation({ mobileNavIndex = -1, children }: NavigationProps): JSX.Element {
+    const isMobileNav = mobileNavIndex > -1;
+
+    if (isMobileNav && Array.isArray(children)) {
+        children = children.slice(mobileNavIndex, mobileNavIndex + 1);
+    }
+
     return (
-        <div className={styles.Navigation}>
-            {children}
-        </div>
+        <>
+            <div
+                className={cx(styles.Navigation, {
+                    [styles.mobileNav]: isMobileNav
+                })}
+            >
+                {children}
+            </div>
+            {isMobileNav && (
+                <div className={styles.spacer} />
+            )}
+        </>
     );
 }
 

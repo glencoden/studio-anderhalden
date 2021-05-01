@@ -7,3 +7,20 @@
     grid-row-gap: var(--space);
     justify-items: start;
 }
+
+.mobileNav {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: var(--mobile-nav-height);
+    grid-row-gap: 0;
+    justify-items: end;
+    padding: 0 var(--padding-large);
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--background-color);
+}
+
+.spacer {
+    width: 100%;
+    height: var(--mobile-nav-height);
+}

@@ -24,7 +24,7 @@ export function applyStylesFromConfig(config: Config): void {
     // @ts-ignore
     document.documentElement.style.setProperty('--white', config.palette.white);
     // @ts-ignore
-    document.documentElement.style.setProperty('--animation-time', config.animationTime);
+    document.documentElement.style.setProperty('--animation-time', `${config.animationTime}s`);
 }
 
 export function isPortrait(): boolean {

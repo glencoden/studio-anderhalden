@@ -1,6 +1,7 @@
 import { Project, Config } from '../../lib/apiService/parser';
 import styles from './Projects.module.css';
 import { getStyleVariable, isMobile, isPortrait, numberFromPx } from '../../lib/helpers';
+
 import ProjectsItem from './ProjectsItem/ProjectsItem';
 
 type ProjectsProps = {

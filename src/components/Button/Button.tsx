@@ -1,29 +1,26 @@
 import styles from './Button.module.css';
+import cx from 'classnames';
 
 type ButtonProps = {
-    label: string;
-    className?: string;
+    label: string | JSX.Element;
     active?: boolean;
     disabled?: boolean;
     cta?: () => void;
+    stopPropagation?: boolean;
 };
 
 
-function Button({ label, className, disabled, active, cta }: ButtonProps): JSX.Element {
-    const classNames = [ styles.Button ];
-    if (className) {
-        classNames.push(className);
-    }
-    if (active) {
-        classNames.push(styles.active);
-    }
-    if (disabled) {
-        classNames.push(styles.disabled);
-    }
+function Button({ label, active, disabled, cta, stopPropagation }: ButtonProps): JSX.Element {
     return (
         <button
-            className={classNames.join(' ')}
-            onClick={() => {
+            className={cx(styles.Button, {
+                [styles.active]: active,
+                [styles.disabled]: disabled
+            })}
+            onClick={event => {
+                if (stopPropagation) {
+                    event.stopPropagation();
+                }
                 if (disabled || typeof cta !== 'function') {
                     return;
                 }

@@ -6,23 +6,30 @@
     height: 120vh;
     width: 50vw;
     background-color: var(--background-color);
+    transition: transform var(--animation-time) ease;
 }
 
 .left {
-    left: -50vw;
+    left: -51vw;
+    border-right: 1px solid var(--border-color);
     transform: translateX(50vw);
 }
 
 .right {
-    right: -50vw;
+    right: -51vw;
+    border-left: 1px solid var(--border-color);
     transform: translateX(-50vw);
 }
 
-@media only screen and (min-width: 620px) and (orientation: portrait),only screen and (min-width: 820px) and (orientation: landscape) {
-    .Curtain {
-        transition: transform var(--animation-time) ease;
-    }
+.open {
+    transform: translateX(0);
+}
 
+.closed {
+    border: none;
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
     .left {
         left: var(--curtain-offset);
         border-right: 1px solid var(--border-color);
@@ -33,5 +40,9 @@
         right: var(--curtain-offset);
         border-left: 1px solid var(--border-color);
         transform: translateX(var(--curtain-offset));
+    }
+
+    .open {
+        transform: translateX(0);
     }
 }

@@ -10,6 +10,7 @@ import Button from './components/Button/Button';
 import Projects from './components/Projects/Projects';
 import Info from './components/Info/Info';
 import PageBox from './components/PageBox/PageBox';
+import { isMobile } from './lib/helpers';
 
 
 function App(): JSX.Element {
@@ -20,6 +21,12 @@ function App(): JSX.Element {
         asyncDispatch(actions.getSiteContent()); // TODO refresh
     }, [ asyncDispatch ]);
 
+    const isMobileNav = (targetPage !== Pages.HOME || selectedPage !== Pages.HOME) && isMobile();
+    let mobileNavIndex = -1;
+    if (isMobileNav) {
+        mobileNavIndex = targetPage === Pages.INFO ? 0 : 1;
+    }
+
     console.log('app render state', state);// TODO remove dev code
 
     return (
@@ -29,26 +36,29 @@ function App(): JSX.Element {
                 onOpen={() => asyncDispatch(actions.setPage(targetPage))}
                 onClose={() => asyncDispatch(actions.setPage(Pages.HOME))}
             />
+
+            <Navigation mobileNavIndex={mobileNavIndex}>
+                <Button
+                    label={isMobileNav ? 'x' : 'Grafik'}
+                    active={targetPage === Pages.PROJECTS}
+                    disabled={!siteContent.projects.length}
+                    cta={() => asyncDispatch(actions.setTarget(Pages.PROJECTS))}
+                />
+                <Button
+                    label={isMobileNav ? '...' : 'Kontakt + Info'}
+                    active={targetPage === Pages.INFO}
+                    disabled={!siteContent.infoBlocks.length}
+                    cta={() => asyncDispatch(actions.setTarget(Pages.INFO))}
+                />
+            </Navigation>
+
             <Logo>
                 <Button
                     label={siteContent.config ? siteContent.config.documentTitle : 'Studio Anderhalden'}
                     cta={() => asyncDispatch(actions.setTarget(Pages.HOME))}
                 />
             </Logo>
-            <Navigation>
-                <Button
-                    label="Grafik"
-                    active={targetPage === Pages.PROJECTS}
-                    disabled={!siteContent.projects.length}
-                    cta={() => asyncDispatch(actions.setTarget(Pages.PROJECTS))}
-                />
-                <Button
-                    label="Kontakt + Info"
-                    active={targetPage === Pages.INFO}
-                    disabled={!siteContent.infoBlocks.length}
-                    cta={() => asyncDispatch(actions.setTarget(Pages.INFO))}
-                />
-            </Navigation>
+
             <PageBox page={Pages.PROJECTS} target={targetPage} selected={selectedPage}>
                 <Projects
                     items={siteContent.projects}
@@ -56,6 +66,7 @@ function App(): JSX.Element {
                     setProjectId={projectId => asyncDispatch(actions.setProjectId(projectId))}
                 />
             </PageBox>
+
             <PageBox page={Pages.INFO} target={targetPage} selected={selectedPage}>
                 <Info
                     items={siteContent.infoBlocks}

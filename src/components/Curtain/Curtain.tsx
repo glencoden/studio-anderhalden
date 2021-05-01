@@ -1,4 +1,5 @@
 import styles from './Curtain.module.css';
+import cx from 'classnames';
 
 type CurtainProps = {
     open: boolean;
@@ -11,12 +12,16 @@ function Curtain({ open, onOpen, onClose }: CurtainProps): JSX.Element {
     return (
         <>
             <div
-                className={`${styles.Curtain} ${styles.left}`}
-                style={{ [open ? 'transform' : '']: 'translateX(0)' }}
+                className={cx(`${styles.Curtain} ${styles.left}`, {
+                    [styles.open]: open,
+                    [styles.closed]: !open
+                })}
             />
             <div
-                className={`${styles.Curtain} ${styles.right}`}
-                style={{ [open ? 'transform' : '']: 'translateX(0)' }}
+                className={cx(`${styles.Curtain} ${styles.right}`, {
+                    [styles.open]: open,
+                    [styles.closed]: !open
+                })}
                 onTransitionEnd={() => {
                     if (open) {
                         if (typeof onOpen !== 'function') {

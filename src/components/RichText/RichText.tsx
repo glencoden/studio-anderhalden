@@ -1,6 +1,7 @@
 import { EntryFields } from 'contentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import styles from './RichText.module.css';
+import cx from 'classnames';
 
 const Sizes = {
     M: 'm',
@@ -14,11 +15,6 @@ type RichTextProps = {
     size: typeof Size[number];
 };
 
-const sizeClass = {
-    [Sizes.M]: styles.mediumSize,
-    [Sizes.S]: styles.smallSize
-};
-
 function renderRichText(entry: EntryFields.RichText) {
     // @ts-ignore
     return documentToReactComponents(entry);
@@ -27,7 +23,12 @@ function renderRichText(entry: EntryFields.RichText) {
 
 function RichText({ entry, size }: RichTextProps): JSX.Element {
     return (
-        <div className={`${styles.RichText} ${sizeClass[size]}`}>
+        <div
+            className={cx(styles.RichText, {
+                [styles.mediumSize]: size === Sizes.M,
+                [styles.smallSize]: size === Sizes.S
+            })}
+        >
             {renderRichText(entry)}
         </div>
     );

@@ -1,6 +1,7 @@
 import { Project, Config } from '../../../lib/apiService/parser';
 import styles from './ProjectsItem.module.css';
 import { getStyleVariable, numberFromPx } from '../../../lib/helpers';
+
 import Image from '../../Image/Image';
 
 type ProjectsItemProps = {
@@ -19,7 +20,7 @@ function ProjectsItem({ item, config, callback, fixedWidth }: ProjectsItemProps)
     }
 
     let imageSize = config?.imageSize || numberFromPx(getStyleVariable('--default-content-width'));
-    let ratio = config?.ratio || numberFromPx(getStyleVariable('--default-image-ratio'));
+    let ratio = config?.ratio || Number(getStyleVariable('--default-image-ratio'));
 
     let width = 0;
 

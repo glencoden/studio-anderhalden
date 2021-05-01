@@ -1,15 +1,23 @@
 .PageBox {
+    display: none;
     position: fixed;
-    top: 0;
+    top: var(--mobile-nav-height);
     left: 50%;
-    transform: translate(-50%, 200%);
+    transform: translateX(-50%);
 }
 
 .isTarget {
-    transform: translate(-50%, 0);
+    display: block;
 }
 
 .isSelected {
     position: relative;
-    transform: translate(-50%, 0);
+    top: 0;
+    display: block;
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .PageBox {
+        top: 0;
+    }
 }
