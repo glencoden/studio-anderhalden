@@ -1,13 +1,5 @@
 import { Config } from './apiService/parser';
 
-export function isObject(val: any): Boolean {
-    return val !== null && typeof val !== 'function' && typeof val === 'object' && !Array.isArray(val);
-}
-
-export function isHexColor(val: any): Boolean {
-    return /#[0-9A-Fa-f]{3}/.test(val) || /#[0-9A-Fa-f]{6}/.test(val);
-}
-
 export function applyStylesFromConfig(config: Config): void {
     // @ts-ignore
     if (!config.enabled) {
@@ -25,6 +17,14 @@ export function applyStylesFromConfig(config: Config): void {
     document.documentElement.style.setProperty('--white', config.palette.white);
     // @ts-ignore
     document.documentElement.style.setProperty('--animation-time', `${config.animationTime}s`);
+}
+
+export function isObject(val: any): Boolean {
+    return val !== null && typeof val !== 'function' && typeof val === 'object' && !Array.isArray(val);
+}
+
+export function isHexColor(val: any): Boolean {
+    return /#[0-9A-Fa-f]{3}/.test(val) || /#[0-9A-Fa-f]{6}/.test(val);
 }
 
 export function isPortrait(): boolean {

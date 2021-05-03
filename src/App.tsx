@@ -12,6 +12,7 @@ import Button from './components/Button/Button';
 import Projects from './components/Projects/Projects';
 import Info from './components/Info/Info';
 import PageBox from './components/PageBox/PageBox';
+import ProjectDetail from './components/ProjectDetail/ProjectDetail';
 
 
 function App(): JSX.Element {
@@ -58,9 +59,17 @@ function App(): JSX.Element {
                 <Projects
                     items={siteContent.projects}
                     config={siteContent.config}
-                    setProjectId={projectId => asyncDispatch(actions.setProjectId(projectId))}
+                    setProjectId={projectId => {
+                        asyncDispatch(actions.setProjectId(projectId));
+                        asyncDispatch(actions.setTarget(Pages.PROJECT_DETAIL));
+                        asyncDispatch(actions.setPage(Pages.PROJECT_DETAIL));
+                    }}
                 />
             </PageBox>
+
+            {selectedPage === Pages.PROJECT_DETAIL && (
+                <ProjectDetail project={siteContent.projects.find((project: any) => project.id === selectedProjectId)} />
+            )}
 
             <PageBox page={Pages.INFO} target={targetPage} selected={selectedPage}>
                 <Info
