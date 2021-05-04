@@ -8,3 +8,28 @@
     align-items: center;
     height: calc(var(--space) - var(--padding-large));
 }
+
+.counter {
+    height: var(--space);
+    line-height: var(--space);
+    font-size: var(--font-size-medium);
+    padding-left: var(--padding-medium);
+    border-left: 1px solid var(--border-color);
+}
+
+.close {
+    background-color: transparent;
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .NavClose {
+        justify-content: space-between;
+        top: 0;
+        height: var(--space);
+        width: 100%;
+        padding-left: 50%;
+        padding-right: var(--padding-large);
+        border-bottom: 1px solid var(--border-color);
+        background-color: var(--background-color);
+    }
+}

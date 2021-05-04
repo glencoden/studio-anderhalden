@@ -1,6 +1,6 @@
 import { Project, Config } from '../../../lib/apiService/parser';
 import styles from './ProjectsItem.module.css';
-import { getContentWidth, getStyleVariable } from '../../../lib/helpers';
+import { getContentWidth, getImageRatio, isMobile } from '../../../lib/helpers';
 
 import Image from '../../Image/Image';
 
@@ -18,9 +18,8 @@ function ProjectsItem({ item, config, callback }: ProjectsItemProps): JSX.Elemen
         );
     }
 
-    let ratio = config?.ratio || Number(getStyleVariable('--default-image-ratio'));
-
     let width = getContentWidth(config);
+    let ratio = getImageRatio(config);
 
     if (item.thumbnail.file.width < item.thumbnail.file.height) {
         ratio = 1 / ratio;
@@ -41,6 +40,14 @@ function ProjectsItem({ item, config, callback }: ProjectsItemProps): JSX.Elemen
                 ratio={ratio}
                 {...item.thumbnail}
             />
+            {isMobile() && (
+                <h4
+                    className={styles.title}
+                    style={{ width: `${width}px` }}
+                >
+                    {item.title}
+                </h4>
+            )}
         </div>
     );
 }

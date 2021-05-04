@@ -1,10 +1,12 @@
+import { EntryFields } from 'contentful';
 import { Project, Config } from '../../lib/apiService/parser';
 import styles from './ProjectDetail.module.css';
-import { getContentWidth } from '../../lib/helpers';
+import { getContentWidth, getImageRatio, isMobile } from '../../lib/helpers';
 
+import Image from '../Image/Image';
+import RichText from '../RichText/RichText';
 import NavClose from './NavClose/NavClose';
 import NavSkip from './NavSkip/NavSkip';
-import Image from '../Image/Image';
 
 type ProjectDetailProps = {
     selectedProjectId: string;
@@ -29,20 +31,42 @@ function ProjectDetail({ selectedProjectId, projects, config, setProjectId, onCl
     const nextIndex = (projects.length + index + 1) % projects.length;
 
     const width = getContentWidth(config);
+    const ratio = getImageRatio(config);
 
     return (
         <div className={styles.ProjectDetail}>
             <div className={styles.imageBox}>
                 {project.images.map((image, index) => (
-                    <Image key={index} width={width} ratio={1.6} id={image.id} title={image.title} file={image.file} />
+                    <Image key={index} width={width} ratio={ratio} id={image.id} title={image.title} file={image.file} />
                 ))}
             </div>
 
+            <div
+                className={styles.textBox}
+                style={isMobile() ? {} : { right: `${Math.max((window.innerWidth / 2) - width, 0)}px`, width: `${width / 2}px` }}
+            >
+                <h1>{project.title}</h1>
+                <RichText entry={project.text as EntryFields.RichText} size="m" />
+                <RichText entry={project.footnote as EntryFields.RichText} size="s" />
+                <div className={styles.space} />
+            </div>
+
             <NavSkip
-                selectPrev={() => setProjectId(projects[prevIndex].id)}
-                selectNext={() => setProjectId(projects[nextIndex].id)}
+                selectPrev={() => {
+                    setProjectId(projects[prevIndex].id);
+                    window.scroll(0, 0);
+                }}
+                selectNext={() => {
+                    setProjectId(projects[nextIndex].id);
+                    window.scroll(0, 0);
+                }}
             />
-            <NavClose onClose={onClose} />
+
+            <NavClose
+                onClose={onClose}
+                numProjects={projects.length}
+                currentIndex={index}
+            />
         </div>
     );
 }

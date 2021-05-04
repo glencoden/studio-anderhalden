@@ -33,15 +33,12 @@ function Image({ width, ratio, id, title, file }: ImageProps): JSX.Element {
     return (
         <div
             className={styles.ImageBox}
-            style={{
-                width: `${width}px`,
-                height: `${height}px`,
-                opacity: loaded ? 1 : 0
-            }}
+            style={{ width: `${width}px`, height: `${height}px` }}
         >
             {src && (
                 <img
                     className={styles.Image}
+                    style={{ opacity: loaded ? 1 : 0 }}
                     ref={imageRef}
                     src={src}
                     alt={title}

@@ -13,6 +13,7 @@ import Projects from './components/Projects/Projects';
 import Info from './components/Info/Info';
 import PageBox from './components/PageBox/PageBox';
 import ProjectDetail from './components/ProjectDetail/ProjectDetail';
+import CloseIcon from './components/Icons/CloseIcon';
 
 
 function App(): JSX.Element {
@@ -33,9 +34,12 @@ function App(): JSX.Element {
                 onClose={() => asyncDispatch(actions.setPage(Pages.HOME))}
             />
 
-            <Navigation mobileNavIndex={isMobileNav ? (targetPage === Pages.INFO ? 0 : 1) : -1}>
+            <Navigation
+                isMobileNav={isMobileNav}
+                mobileNavIndex={isMobileNav ? (targetPage === Pages.INFO ? 0 : 1) : (targetPage === Pages.PROJECT_DETAIL ? 1 : -1)}
+            >
                 <Button
-                    label={isMobileNav ? 'x' : 'Grafik'}
+                    label={isMobileNav ? <CloseIcon/> : 'Grafik'}
                     active={targetPage === Pages.PROJECTS}
                     disabled={!siteContent.projects.length}
                     cta={() => asyncDispatch(actions.setTarget(Pages.PROJECTS))}

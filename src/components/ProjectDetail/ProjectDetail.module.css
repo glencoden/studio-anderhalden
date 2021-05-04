@@ -4,7 +4,47 @@
 }
 
 .imageBox {
+    position: relative;
     display: grid;
     grid-gap: var(--padding-medium);
     justify-items: center;
+}
+
+.textBox {
+    display: grid;
+    grid-gap: var(--padding-large);
+    padding: var(--padding-large) var(--padding-medium);
+}
+
+.textBox h1 {
+    font-size: var(--font-size-large);
+    margin: var(--padding-medium) 0 0;
+    white-space: pre-line;
+}
+
+.space {
+    display: none;
+    height: var(--space);
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .ProjectDetail {
+        padding: calc(var(--space) + var(--padding-large)) 0 calc(2 * var(--space));
+    }
+
+    .textBox {
+        position: fixed;
+        top: calc(var(--space) + var(--padding-large));
+        max-height: calc(100vh - (2 * var(--space)) - var(--padding-large));
+        padding: 0 var(--padding-medium);
+        overflow: scroll;
+    }
+
+    .textBox h1 {
+        margin: 0;
+    }
+
+    .space {
+        display: block;
+    }
 }

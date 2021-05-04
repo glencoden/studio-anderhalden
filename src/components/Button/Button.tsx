@@ -7,13 +7,15 @@ type ButtonProps = {
     disabled?: boolean;
     cta?: () => void;
     stopPropagation?: boolean;
+    className?: string;
 };
 
 
-function Button({ label, active, disabled, cta, stopPropagation }: ButtonProps): JSX.Element {
+function Button({ label, active, disabled, cta, stopPropagation, className = '' }: ButtonProps): JSX.Element {
     return (
         <button
             className={cx(styles.Button, {
+                [className]: className,
                 [styles.active]: active,
                 [styles.disabled]: disabled
             })}

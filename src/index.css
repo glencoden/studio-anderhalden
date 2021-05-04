@@ -31,10 +31,10 @@
     --font-size-large: 20px;
 
     --padding-small: 5px;
-    --padding-medium: 10px;
+    --padding-medium: 14px;
     --padding-large: 20px;
     --space: 60px;
-    --line-height-small: 1.25;
+    --line-height-small: 1.4;
 
     --z-front: 1000;
     --z-middle: 100;
@@ -44,10 +44,16 @@
     --button-hover-transition-time: 0.15s;
 
     --curtain-offset: calc(-50vw + var(--padding-medium));
-    --mobile-nav-height: calc(var(--font-size-large) + (4 * var(--padding-medium)));
+    --mobile-nav-height: calc(var(--font-size-large) + (2 * var(--padding-medium)) + (2 * var(--padding-small)));
 
     --default-content-width: 640px;
     --default-image-ratio: 1.6;
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    :root {
+        --line-height-small: 1.25;
+    }
 }
 
 body {

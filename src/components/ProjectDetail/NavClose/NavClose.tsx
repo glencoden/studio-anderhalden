@@ -1,5 +1,7 @@
 import styles from './NavClose.module.css';
+import { isMobile } from '../../../lib/helpers';
 import Button from '../../Button/Button';
+import CloseIcon from '../../Icons/CloseIcon';
 
 type NavCloseProps = {
     onClose: () => void;
@@ -11,12 +13,15 @@ type NavCloseProps = {
 function NavClose({ onClose, numProjects, currentIndex }: NavCloseProps): JSX.Element {
     return (
         <div className={styles.NavClose}>
+            {!isMobile() && typeof numProjects === 'number' && typeof currentIndex === 'number' && (
+                <div className={styles.counter}>
+                    {`${currentIndex + 1}/${numProjects}`}
+                </div>
+            )}
             <Button
-                label="x"
-                cta={() => {
-                    console.log('happens');// TODO remove dev code
-                    onClose();
-                }}
+                className={styles.close}
+                label={<CloseIcon/>}
+                cta={() => onClose()}
             />
         </div>
     );

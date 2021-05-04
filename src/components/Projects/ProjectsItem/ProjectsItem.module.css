@@ -5,3 +5,10 @@
     background-color: var(--background-color);
     cursor: pointer;
 }
+
+.title {
+    font-size: var(--font-size-medium);
+    font-weight: normal;
+    text-align: center;
+    margin: var(--padding-medium) 0 0;
+}

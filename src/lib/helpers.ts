@@ -19,6 +19,21 @@ export function applyStylesFromConfig(config: Config): void {
     document.documentElement.style.setProperty('--animation-time', `${config.animationTime}s`);
 }
 
+export function getContentWidth(config: Config): number {
+    let width = Math.round(Math.min(
+        (config?.imageSize || numberFromPx(getStyleVariable('--default-content-width'))),
+        (window.innerWidth / 2))
+    );
+    if (isMobile() && isPortrait()) {
+        width = window.innerWidth - (2 * numberFromPx(getStyleVariable('--padding-medium')));
+    }
+    return width;
+}
+
+export function getImageRatio(config: Config) {
+    return config?.ratio || Number(getStyleVariable('--default-image-ratio'));
+}
+
 export function isObject(val: any): Boolean {
     return val !== null && typeof val !== 'function' && typeof val === 'object' && !Array.isArray(val);
 }
@@ -41,17 +56,6 @@ export function isMobile(): boolean {
         return window.innerWidth < 620;
     }
     return window.innerWidth < 820;
-}
-
-export function getContentWidth(config: Config): number {
-    let width = Math.round(Math.min(
-        (config?.imageSize || numberFromPx(getStyleVariable('--default-content-width'))),
-        (window.innerWidth / 2))
-    );
-    if (isMobile() && isPortrait()) {
-        width = window.innerWidth - (2 * numberFromPx(getStyleVariable('--padding-medium')));
-    }
-    return width;
 }
 
 const styleVariables: { [key: string]: string } = {};

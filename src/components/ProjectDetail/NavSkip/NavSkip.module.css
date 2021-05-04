@@ -11,3 +11,19 @@
     border-bottom: 1px solid var(--border-color);
     background-color: var(--background-color);
 }
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .NavSkip {
+        top: calc(100vh - var(--space));
+        height: var(--space);
+        padding-left: 50%;
+        border-bottom: none;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .selectPrev {
+        height: var(--space);
+        padding-left: var(--padding-medium);
+        border-left: 1px solid var(--border-color);
+    }
+}
