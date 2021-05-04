@@ -14,7 +14,7 @@
 
 .Logo {
     position: fixed;
-    left: var(--padding-large);
+    left: var(--padding-medium);
     top: var(--padding-medium);
     z-index: var(--z-front);
     animation: none;
@@ -22,4 +22,10 @@
 
 .Logo:hover {
     animation: wiggle 0.6s;
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .Logo {
+        left: var(--padding-large);
+    }
 }

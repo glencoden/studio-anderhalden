@@ -1,12 +1,10 @@
 .NavClose {
     position: fixed;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     top: var(--mobile-nav-height);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     height: calc(var(--space) - var(--padding-large));
-    border-bottom: 1px solid var(--border-color);
-    background-color: var(--background-color);
 }

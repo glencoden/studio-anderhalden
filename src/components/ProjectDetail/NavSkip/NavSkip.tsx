@@ -1,12 +1,23 @@
 import styles from './NavSkip.module.css';
 import Button from '../../Button/Button';
 
+type NavSkipProps = {
+    selectPrev: () => void;
+    selectNext: () => void;
+};
 
-function NavSkip(): JSX.Element {
+
+function NavSkip({ selectPrev, selectNext }: NavSkipProps): JSX.Element {
     return (
         <div className={styles.NavSkip}>
-            <Button label="<" />
-            <Button label=">" />
+            <Button
+                label="<"
+                cta={selectPrev}
+            />
+            <Button
+                label=">"
+                cta={selectNext}
+            />
         </div>
     );
 }

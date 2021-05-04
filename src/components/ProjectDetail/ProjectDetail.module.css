@@ -3,7 +3,7 @@
     padding: var(--space) 0;
 }
 
-.images {
+.imageBox {
     display: grid;
     grid-gap: var(--padding-medium);
     justify-items: center;

@@ -69,8 +69,14 @@ function App(): JSX.Element {
 
             {selectedPage === Pages.PROJECT_DETAIL && (
                 <ProjectDetail
-                    project={siteContent.projects.find((project: any) => project.id === selectedProjectId)}
+                    selectedProjectId={selectedProjectId}
+                    projects={siteContent.projects}
                     config={siteContent.config}
+                    setProjectId={projectId => asyncDispatch(actions.setProjectId(projectId))}
+                    onClose={() => {
+                        asyncDispatch(actions.setTarget(Pages.PROJECTS));
+                        asyncDispatch(actions.setPage(Pages.PROJECTS));
+                    }}
                 />
             )}
 
