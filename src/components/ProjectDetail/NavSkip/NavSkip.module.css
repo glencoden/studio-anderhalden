@@ -1,0 +1,11 @@
+.NavSkip {
+    position: fixed;
+    left: 0;
+    top: var(--mobile-nav-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: calc(var(--space) - var(--padding-large));
+    padding: 0 var(--padding-large);
+}

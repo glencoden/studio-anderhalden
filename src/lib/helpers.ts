@@ -43,6 +43,17 @@ export function isMobile(): boolean {
     return window.innerWidth < 820;
 }
 
+export function getContentWidth(config: Config): number {
+    let width = Math.round(Math.min(
+        (config?.imageSize || numberFromPx(getStyleVariable('--default-content-width'))),
+        (window.innerWidth / 2))
+    );
+    if (isMobile() && isPortrait()) {
+        width = window.innerWidth - (2 * numberFromPx(getStyleVariable('--padding-medium')));
+    }
+    return width;
+}
+
 const styleVariables: { [key: string]: string } = {};
 
 export function getStyleVariable(name: string): string {

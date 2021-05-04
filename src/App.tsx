@@ -68,7 +68,10 @@ function App(): JSX.Element {
             </PageBox>
 
             {selectedPage === Pages.PROJECT_DETAIL && (
-                <ProjectDetail project={siteContent.projects.find((project: any) => project.id === selectedProjectId)} />
+                <ProjectDetail
+                    project={siteContent.projects.find((project: any) => project.id === selectedProjectId)}
+                    config={siteContent.config}
+                />
             )}
 
             <PageBox page={Pages.INFO} target={targetPage} selected={selectedPage}>

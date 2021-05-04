@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { InfoBlock, Config } from '../../lib/apiService/parser';
 import styles from './Info.module.css';
 import cx from 'classnames';
-import { isMobile, isPortrait, getStyleVariable, numberFromPx } from '../../lib/helpers';
+import { getContentWidth } from '../../lib/helpers';
 
 import InfoItem from './InfoItem/InfoItem';
 
@@ -20,14 +20,7 @@ function Info({ items, config, open, onOpen, onClose }: InfoProps): JSX.Element 
 
     useEffect(() => setIsTransitioning(true), [ open ]);
 
-    let width = Math.round(Math.min(
-        (config?.imageSize || numberFromPx(getStyleVariable('--default-content-width'))),
-        (window.innerWidth / 2))
-    );
-
-    if (isMobile() && isPortrait()) {
-        width = window.innerWidth - (2 * numberFromPx(getStyleVariable('--padding-medium')));
-    }
+    const width = getContentWidth(config);
 
     return (
         <div

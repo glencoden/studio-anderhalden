@@ -1,4 +1,10 @@
 .ProjectDetail {
+    position: relative;
+    padding: var(--space) 0;
+}
+
+.images {
     display: grid;
+    grid-gap: var(--padding-medium);
     justify-items: center;
 }
