@@ -36,15 +36,16 @@
     --space: 60px;
     --line-height-small: 1.4;
 
+    --curtain-offset: calc(-50vw + var(--padding-medium));
+    --nav-height: 57px;
+    --mobile-nav-height: calc(var(--font-size-large) + (2 * var(--padding-medium)) + (2 * var(--padding-small)));
+
     --z-front: 1000;
     --z-middle: 100;
     --z-back: 10;
 
     --image-fade-in-time: 0.2s;
     --button-hover-transition-time: 0.15s;
-
-    --curtain-offset: calc(-50vw + var(--padding-medium));
-    --mobile-nav-height: calc(var(--font-size-large) + (2 * var(--padding-medium)) + (2 * var(--padding-small)));
 
     --default-content-width: 640px;
     --default-image-ratio: 1.6;

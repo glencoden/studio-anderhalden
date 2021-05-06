@@ -14,8 +14,8 @@
 
 .Logo {
     position: fixed;
-    left: var(--padding-medium);
-    top: var(--padding-medium);
+    left: 0;
+    top: 0;
     z-index: var(--z-front);
     animation: none;
 }
@@ -26,6 +26,6 @@
 
 @media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
     .Logo {
-        left: var(--padding-large);
+        left: calc(1px + var(--padding-medium));
     }
 }

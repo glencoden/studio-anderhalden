@@ -15,11 +15,15 @@ function NavClose({ onClose, numProjects, currentIndex }: NavCloseProps): JSX.El
         <div className={styles.NavClose}>
             {!isMobile() && typeof numProjects === 'number' && typeof currentIndex === 'number' && (
                 <div className={styles.counter}>
-                    {`${currentIndex + 1}/${numProjects}`}
+                    <Button
+                        className={styles.counterButton}
+                        label={`${currentIndex + 1}/${numProjects}`}
+                        disabled
+                    />
                 </div>
             )}
             <Button
-                className={styles.close}
+                className={styles.closeButton}
                 label={<CloseIcon/>}
                 cta={() => onClose()}
             />

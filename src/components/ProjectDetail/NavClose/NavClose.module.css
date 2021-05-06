@@ -6,26 +6,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(var(--space) - var(--padding-large));
+    height: calc(var(--nav-height) - var(--padding-large));
 }
 
 .counter {
-    height: var(--space);
-    line-height: var(--space);
-    font-size: var(--font-size-medium);
+    height: var(--nav-height);
     padding-left: var(--padding-medium);
     border-left: 1px solid var(--border-color);
 }
 
-.close {
+.counterButton {
+    font-size: var(--font-size-medium);
+}
+
+.closeButton {
+    line-height: var(--font-size-large);
     background-color: transparent;
 }
 
 @media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
     .NavClose {
         justify-content: space-between;
+        align-items: start;
         top: 0;
-        height: var(--space);
+        height: var(--nav-height);
         width: 100%;
         padding-left: 50%;
         padding-right: var(--padding-large);

@@ -4,7 +4,7 @@
     font-size: var(--font-size-large);
     text-align: center;
     align-items: flex-start;
-    padding: var(--padding-small);
+    padding: var(--padding-medium);
     border: none;
     color: var(--black);
     background-color: var(--background-color);

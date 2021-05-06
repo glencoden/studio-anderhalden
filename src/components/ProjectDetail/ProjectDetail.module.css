@@ -1,6 +1,6 @@
 .ProjectDetail {
     position: relative;
-    padding: var(--space) 0;
+    padding: var(--nav-height) 0;
 }
 
 .imageBox {
@@ -28,18 +28,18 @@
 
 .space {
     display: none;
-    height: var(--space);
+    height: var(--nav-height);
 }
 
 @media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
     .ProjectDetail {
-        padding: calc(var(--space) + var(--padding-large)) 0 calc(2 * var(--space));
+        padding: calc(var(--nav-height) + var(--padding-large)) 0 calc(2 * var(--nav-height));
     }
 
     .textBox {
         position: fixed;
-        top: calc(var(--space) + var(--padding-large));
-        max-height: calc(100vh - (2 * var(--space)) - var(--padding-large));
+        top: calc(var(--nav-height) + var(--padding-large));
+        max-height: calc(100vh - (2 * var(--nav-height)) - var(--padding-large));
         padding: 0 var(--padding-medium);
         overflow: scroll;
     }

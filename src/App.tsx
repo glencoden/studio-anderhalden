@@ -37,12 +37,14 @@ function App(): JSX.Element {
                 mobileNavIndex={isMobileNav ? (targetPage === Pages.INFO ? 0 : 1) : (targetPage === Pages.PROJECT_DETAIL ? 1 : -1)}
             >
                 <Button
+                    className={isMobileNav ? styles.mobileNavButton : ''}
                     label={isMobileNav ? <CloseIcon/> : 'Grafik'}
                     active={targetPage === Pages.PROJECTS}
                     disabled={!siteContent.projects.length}
                     cta={() => asyncDispatch(actions.setTarget(Pages.PROJECTS))}
                 />
                 <Button
+                    className={isMobileNav ? styles.mobileNavButton : ''}
                     label={isMobileNav ? '...' : 'Kontakt + Info'}
                     active={targetPage === Pages.INFO}
                     disabled={!siteContent.infoBlocks.length}

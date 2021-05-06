@@ -29,6 +29,7 @@ function ProjectsItem({ item, config, callback }: ProjectsItemProps): JSX.Elemen
     if (item.thumbnail.file.width < item.thumbnail.file.height) {
         const prevWidth = width;
         const padding = numberFromPx(getStyleVariable('--padding-medium'));
+
         width = Math.round(width / ratio);
         ratio = width / (prevWidth - (4 * padding));
     }

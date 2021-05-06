@@ -1,11 +1,12 @@
 .Navigation {
     position: fixed;
-    left: var(--padding-large);
-    bottom: var(--padding-medium);
+    left: 0;
+    bottom: 0;
     z-index: var(--z-front);
     display: grid;
     grid-row-gap: var(--space);
     justify-items: start;
+    overflow: hidden;
 }
 
 .mobileNav {
@@ -23,4 +24,10 @@
 .spacer {
     width: 100%;
     height: var(--mobile-nav-height);
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .Navigation {
+        left: calc(1px + var(--padding-medium));
+    }
 }

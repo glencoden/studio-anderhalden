@@ -12,11 +12,12 @@ function NavSkip({ selectPrev, selectNext }: NavSkipProps): JSX.Element {
     return (
         <div className={styles.NavSkip}>
             <Button
-                className={styles.selectPrev}
+                className={`${styles.skipButton} ${styles.selectPrev}`}
                 label={<ArrowLeft/>}
                 cta={selectPrev}
             />
             <Button
+                className={styles.skipButton}
                 label={<ArrowRight/>}
                 cta={selectNext}
             />
