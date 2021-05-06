@@ -1,9 +1,10 @@
-import { RawEntry, SiteContent } from './index';
+import { RawEntry, SiteContent } from '../index';
 import { EntryCollection } from 'contentful';
 import { isObject } from '../../helpers';
 import projectParser from './projectParser';
 import infoBlockParser from './infoBlockParser';
 import configParser from './configParser';
+import { sortProjects } from './util';
 
 const ItemIds: { [key: string]: string } = {
     PROJECT: 'projekt',
@@ -64,9 +65,7 @@ function siteContentParser(raw: EntryCollection<RawEntry>): SiteContent {
         }
     });
 
-    siteContent.projects = siteContent.projects.sort((a, b) => {
-        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-    });
+    siteContent.projects = sortProjects(siteContent.projects);
 
     return siteContent;
 }

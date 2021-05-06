@@ -1,4 +1,4 @@
-import { RawEntry, Project } from './index';
+import { RawEntry, Project } from '../index';
 import { EntryFields } from 'contentful';
 import { isObject } from '../../helpers';
 import { parseRichText, parseImage } from './util';
@@ -16,7 +16,8 @@ function projectParser(item: RawEntry) {
         text: null,
         footnote: null,
         thumbnail: null,
-        images: []
+        images: [],
+        position: -1
     };
     if (typeof item.sys.id === typeof project.id) {
         project.id = item.sys.id;
@@ -41,6 +42,9 @@ function projectParser(item: RawEntry) {
     }
     if (Array.isArray(item.fields.bilder)) {
         project.images = item.fields.bilder.map((entry: EntryFields.Object) => parseImage(entry)).filter((entry: EntryFields.Object) => !!entry);
+    }
+    if (typeof item.fields.position === typeof project.position) {
+        project.position = item.fields.position;
     }
     return project;
 }

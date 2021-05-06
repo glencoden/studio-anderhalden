@@ -1,4 +1,4 @@
-import { Project, Config } from '../../lib/apiService/parser';
+import { Project, Config } from '../../lib/apiService';
 import styles from './Projects.module.css';
 
 import ProjectsItem from './ProjectsItem/ProjectsItem';

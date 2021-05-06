@@ -20,6 +20,7 @@ type Project = {
     footnote: EntryFields.RichText | null;
     thumbnail: ParsedImage | null;
     images: Array<ParsedImage>;
+    position: number;
 };
 
 type InfoBlock = {

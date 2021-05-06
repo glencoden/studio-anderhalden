@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { InfoBlock, Config } from '../../lib/apiService/parser';
+import { InfoBlock, Config } from '../../lib/apiService';
 import styles from './Info.module.css';
 import cx from 'classnames';
 import { getStyleVariable, isMobile, isPortrait, numberFromPx } from '../../lib/helpers';

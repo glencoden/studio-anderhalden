@@ -1,4 +1,4 @@
-import { Config } from './apiService/parser';
+import { Config } from './apiService';
 
 export function applyStylesFromConfig(config: Config): void {
     // @ts-ignore
@@ -74,4 +74,8 @@ export function numberFromPx(value: string): number {
         return Number(value.slice(0, -2));
     }
     return 0;
+}
+
+export function incrementIndex(list: Array<any>, index: number, increment: number): number {
+    return (list.length + index + increment) % list.length;
 }

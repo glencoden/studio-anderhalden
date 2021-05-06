@@ -1,6 +1,6 @@
-import { Project, Config } from '../../../lib/apiService/parser';
+import { Project, Config } from '../../../lib/apiService';
 import styles from './ProjectsItem.module.css';
-import { getContentWidth, getImageRatio, isMobile } from '../../../lib/helpers';
+import { getContentWidth, getImageRatio, getStyleVariable, isMobile, numberFromPx } from '../../../lib/helpers';
 
 import Image from '../../Image/Image';
 
@@ -21,12 +21,16 @@ function ProjectsItem({ item, config, callback }: ProjectsItemProps): JSX.Elemen
     let width = getContentWidth(config);
     let ratio = getImageRatio(config);
 
-    if (item.thumbnail.file.width < item.thumbnail.file.height) {
-        ratio = 1 / ratio;
+    if (item.thumbnail.file.width === item.thumbnail.file.height) {
+        width = Math.round(width / ratio);
+        ratio = 1;
     }
 
-    if (ratio < 1) {
-        width = Math.round(width * ratio);
+    if (item.thumbnail.file.width < item.thumbnail.file.height) {
+        const prevWidth = width;
+        const padding = numberFromPx(getStyleVariable('--padding-medium'));
+        width = Math.round(width / ratio);
+        ratio = width / (prevWidth - (4 * padding));
     }
 
     return (

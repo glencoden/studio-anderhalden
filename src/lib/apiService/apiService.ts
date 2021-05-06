@@ -1,5 +1,5 @@
 import { ContentfulClientApi, EntryCollection } from 'contentful';
-import { SiteContent } from './parser';
+import { SiteContent } from './index';
 import siteContentParser from './parser/siteContentParser';
 
 const contentful = require('contentful');

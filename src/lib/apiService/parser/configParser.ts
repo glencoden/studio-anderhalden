@@ -1,4 +1,4 @@
-import { RawEntry, Config } from './index';
+import { RawEntry, Config } from '../index';
 import { isHexColor, isObject } from '../../helpers';
 
 const minAnimationTime = 0.2;

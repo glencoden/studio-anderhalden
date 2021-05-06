@@ -24,10 +24,8 @@ function App(): JSX.Element {
 
     const isMobileNav = (targetPage !== Pages.HOME || selectedPage !== Pages.HOME) && isMobile();
 
-    console.log('app render state', state);// TODO remove dev code
-
     return (
-        <div className={cx(styles.App, { [styles.isHome]: selectedPage === Pages.HOME })}>
+        <div className={cx('', { [styles.isHome]: selectedPage === Pages.HOME })}>
             <Curtain
                 open={targetPage !== Pages.HOME}
                 onOpen={() => asyncDispatch(actions.setPage(targetPage))}

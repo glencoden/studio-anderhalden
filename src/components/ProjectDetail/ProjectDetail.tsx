@@ -1,7 +1,14 @@
 import { EntryFields } from 'contentful';
-import { Project, Config } from '../../lib/apiService/parser';
+import { Project, Config } from '../../lib/apiService';
 import styles from './ProjectDetail.module.css';
-import { getContentWidth, getImageRatio, isMobile } from '../../lib/helpers';
+import {
+    getContentWidth,
+    getImageRatio,
+    getStyleVariable,
+    incrementIndex,
+    isMobile,
+    numberFromPx
+} from '../../lib/helpers';
 
 import Image from '../Image/Image';
 import RichText from '../RichText/RichText';
@@ -27,11 +34,20 @@ function ProjectDetail({ selectedProjectId, projects, config, setProjectId, onCl
     }
 
     const index = projects.indexOf(project);
-    const prevIndex = (projects.length + index - 1) % projects.length;
-    const nextIndex = (projects.length + index + 1) % projects.length;
+    const prevIndex = incrementIndex(projects, index, -1);
+    const nextIndex = incrementIndex(projects, index, 1);
 
     const width = getContentWidth(config);
     const ratio = getImageRatio(config);
+
+    const padding = numberFromPx(getStyleVariable('--padding-medium'));
+    let textBoxRight = (window.innerWidth / 2) - width;
+    let textBoxWidth = width / 2;
+
+    if (textBoxRight < padding) {
+        textBoxRight = padding;
+        textBoxWidth -= padding;
+    }
 
     return (
         <div className={styles.ProjectDetail}>
@@ -43,7 +59,7 @@ function ProjectDetail({ selectedProjectId, projects, config, setProjectId, onCl
 
             <div
                 className={styles.textBox}
-                style={isMobile() ? {} : { right: `${Math.max((window.innerWidth / 2) - width, 0)}px`, width: `${width / 2}px` }}
+                style={isMobile() ? {} : { right: `${textBoxRight}px`, width: `${textBoxWidth}px` }}
             >
                 <h1>{project.title}</h1>
                 <RichText entry={project.text as EntryFields.RichText} size="m" />

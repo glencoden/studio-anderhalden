@@ -17,9 +17,13 @@
 }
 
 .textBox h1 {
+    width: 100%;
     font-size: var(--font-size-large);
     margin: var(--padding-medium) 0 0;
     white-space: pre-line;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-color-primary);
 }
 
 .space {

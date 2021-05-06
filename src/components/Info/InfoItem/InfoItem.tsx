@@ -1,4 +1,4 @@
-import { InfoBlock } from '../../../lib/apiService/parser';
+import { InfoBlock } from '../../../lib/apiService';
 import styles from './InfoItem.module.css';
 import Image from '../../Image/Image';
 import RichText from '../../RichText/RichText';

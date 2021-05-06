@@ -1,4 +1,4 @@
-import { ParsedImage } from '../../lib/apiService/parser';
+import { ParsedImage } from '../../lib/apiService';
 import { useRef, useState, useEffect } from 'react';
 import styles from './Image.module.css';
 import { apiService } from '../../lib/apiService/apiService';
