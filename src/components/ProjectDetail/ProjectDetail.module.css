@@ -1,6 +1,6 @@
 .ProjectDetail {
     position: relative;
-    padding: var(--nav-height) 0;
+    padding: calc(var(--font-size-large) + (3 * var(--padding-medium))) 0;
 }
 
 .imageBox {

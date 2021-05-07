@@ -45,14 +45,14 @@ function ProjectsItem({ item, config, callback }: ProjectsItemProps): JSX.Elemen
                 ratio={ratio}
                 {...item.thumbnail}
             />
-            {isMobile() && (
+            {/*{isMobile() && (
                 <h4
                     className={styles.title}
                     style={{ width: `${width}px` }}
                 >
                     {item.title}
                 </h4>
-            )}
+            )}*/}
         </div>
     );
 }

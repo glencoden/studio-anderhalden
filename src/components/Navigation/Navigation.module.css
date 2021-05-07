@@ -16,7 +16,7 @@
     height: var(--mobile-nav-height);
     grid-row-gap: 0;
     justify-items: end;
-    padding: 0 var(--padding-large);
+    align-items: start;
     border-bottom: 1px solid var(--border-color);
     background-color: var(--background-color);
 }

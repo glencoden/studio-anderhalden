@@ -1,11 +1,11 @@
 export function ArrowLeft(): JSX.Element {
     return (
-        <span>&larr;</span>
+        <span>&#8592;</span>
     );
 }
 
 export function ArrowRight(): JSX.Element {
     return (
-        <span>&rarr;</span>
+        <span>&#8594;</span>
     );
 }

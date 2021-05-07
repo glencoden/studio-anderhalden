@@ -44,13 +44,15 @@
     width: 100%;
 }
 
-@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
-    .infoCurtainBox {
-        padding-bottom: var(--space);
-    }
-
+@media only screen and (min-width: 620px) {
     .isOpen {
         border-left: 1px solid var(--border-color);
         border-right: 1px solid var(--border-color);
+    }
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .infoCurtainBox {
+        padding-bottom: var(--space);
     }
 }

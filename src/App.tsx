@@ -14,6 +14,7 @@ import Info from './components/Info/Info';
 import PageBox from './components/PageBox/PageBox';
 import ProjectDetail from './components/ProjectDetail/ProjectDetail';
 import CloseIcon from './components/Icons/CloseIcon';
+import AddIcon from './components/Icons/AddIcon';
 
 const debounceTimeout = 100;
 let resizeTimeoutId = 0;
@@ -53,15 +54,13 @@ function App(): JSX.Element {
                 mobileNavIndex={isMobileNav ? (targetPage === Pages.INFO ? 0 : 1) : (targetPage === Pages.PROJECT_DETAIL ? 1 : -1)}
             >
                 <Button
-                    className={isMobileNav ? styles.mobileNavButton : ''}
                     label={isMobileNav ? <CloseIcon/> : 'Grafik'}
                     active={targetPage === Pages.PROJECTS}
                     disabled={!siteContent.projects.length}
                     cta={() => asyncDispatch(actions.setTarget(Pages.PROJECTS))}
                 />
                 <Button
-                    className={isMobileNav ? styles.mobileNavButton : ''}
-                    label={isMobileNav ? '...' : 'Kontakt + Info'}
+                    label={isMobileNav ? <AddIcon/> : 'Kontakt + Info'}
                     active={targetPage === Pages.INFO}
                     disabled={!siteContent.infoBlocks.length}
                     cta={() => asyncDispatch(actions.setTarget(Pages.INFO))}

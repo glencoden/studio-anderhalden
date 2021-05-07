@@ -16,7 +16,6 @@ function NavClose({ onClose, numProjects, currentIndex }: NavCloseProps): JSX.El
             {!isMobile() && typeof numProjects === 'number' && typeof currentIndex === 'number' && (
                 <div className={styles.counter}>
                     <Button
-                        className={styles.counterButton}
                         label={`${currentIndex + 1}/${numProjects}`}
                         disabled
                     />
