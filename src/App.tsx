@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './App.module.css';
 import cx from 'classnames';
 import useAsyncReducer from './lib/hooks/useAsyncReducer';
@@ -15,10 +15,26 @@ import PageBox from './components/PageBox/PageBox';
 import ProjectDetail from './components/ProjectDetail/ProjectDetail';
 import CloseIcon from './components/Icons/CloseIcon';
 
+const debounceTimeout = 100;
+let resizeTimeoutId = 0;
+
 
 function App(): JSX.Element {
     const { state, asyncDispatch } = useAsyncReducer(reducer, initState);
     const { siteContent, targetPage, selectedPage, selectedProjectId } = state;
+
+    const [ , triggerResize ] = useState(false);
+
+    useEffect(() => {
+        const resize = () => {
+            if (resizeTimeoutId) {
+                window.clearTimeout(resizeTimeoutId);
+            }
+            resizeTimeoutId = window.setTimeout(() => triggerResize(prevState => !prevState), debounceTimeout);
+        };
+        window.addEventListener('resize', resize);
+        return () => window.removeEventListener('resize', resize);
+    }, []);
 
     useEffect(() => asyncDispatch(actions.getSiteContent()), [ asyncDispatch ]);
 
@@ -54,7 +70,7 @@ function App(): JSX.Element {
 
             <Logo>
                 <Button
-                    label={siteContent.config ? siteContent.config.documentTitle : 'Studio Anderhalden'}
+                    label={siteContent.config?.documentTitle ? siteContent.config.documentTitle : 'Studio Anderhalden'}
                     cta={() => asyncDispatch(actions.setTarget(Pages.HOME))}
                 />
             </Logo>

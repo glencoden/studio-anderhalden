@@ -24,6 +24,31 @@
     line-height: var(--line-height-small);
 }
 
+.RichText hr {
+    border: none;
+}
+
+.largeSize {
+    font-size: var(--font-size-large);
+}
+
+.largeSize h1,
+.largeSize h2,
+.largeSize h3,
+.largeSize h4,
+.largeSize h5,
+.largeSize h6 {
+    font-size: var(--font-size-large);
+}
+
+.largeSize p {
+    font-size: var(--font-size-large);
+}
+
+.largeSize a {
+    font-size: var(--font-size-large);
+}
+
 .mediumSize {
     font-size: var(--font-size-medium);
 }

@@ -79,3 +79,12 @@ export function numberFromPx(value: string): number {
 export function incrementIndex(list: Array<any>, index: number, increment: number): number {
     return (list.length + index + increment) % list.length;
 }
+
+export function addTargetBlankToRichText(node: HTMLDivElement): void {
+    const aTags = node.getElementsByTagName('a');
+    for (let i = 0; i < aTags.length; i++) {
+        if (aTags[i].href && aTags[i].href.startsWith('http')) {
+            aTags[i].setAttribute('target', '_blank');
+        }
+    }
+}

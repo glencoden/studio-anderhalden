@@ -1,9 +1,12 @@
 import { EntryFields } from 'contentful';
+import { useRef, useEffect } from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import styles from './RichText.module.css';
 import cx from 'classnames';
+import { addTargetBlankToRichText } from '../../lib/helpers';
 
 const Sizes = {
+    L: 'l',
     M: 'm',
     S: 's'
 };
@@ -22,9 +25,21 @@ function renderRichText(entry: EntryFields.RichText) {
 
 
 function RichText({ entry, size }: RichTextProps): JSX.Element {
+    const ref = useRef(null);
+
+    useEffect(() => {
+        if (!ref.current) {
+            return;
+        }
+        // @ts-ignore
+        addTargetBlankToRichText(ref.current);
+    }, []);
+
     return (
         <div
+            ref={ref}
             className={cx(styles.RichText, {
+                [styles.largeSize]: size === Sizes.L,
                 [styles.mediumSize]: size === Sizes.M,
                 [styles.smallSize]: size === Sizes.S
             })}

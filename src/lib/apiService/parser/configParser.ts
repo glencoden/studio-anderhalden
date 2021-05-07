@@ -27,6 +27,10 @@ function configParser(item: RawEntry): Config {
         console.warn('unknown config item', item);
         return config;
     }
+    if (!item.fields.configAktiv) {
+        return config;
+    }
+
     if (typeof item.fields.configAktiv === typeof config.enabled) {
         config.enabled = item.fields.configAktiv;
     }

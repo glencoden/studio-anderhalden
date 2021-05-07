@@ -19,6 +19,7 @@
 .textBox h1 {
     width: 100%;
     font-size: var(--font-size-large);
+    font-weight: normal;
     margin: var(--padding-medium) 0 0;
     white-space: pre-line;
     overflow: hidden;

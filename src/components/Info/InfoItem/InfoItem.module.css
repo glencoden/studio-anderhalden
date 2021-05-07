@@ -3,6 +3,10 @@
     border-bottom: 1px solid var(--border-color);
 }
 
+.InfoItem:first-child {
+    padding-top: var(--padding-medium);
+}
+
 .InfoItem:last-child {
     border-bottom: none;
 }

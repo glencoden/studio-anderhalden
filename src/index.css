@@ -33,11 +33,11 @@
     --padding-small: 5px;
     --padding-medium: 12px;
     --padding-large: 20px;
-    --space: 60px;
+    --space: 90px;
     --line-height-small: 1.4;
 
     --curtain-offset: calc(-50vw + var(--padding-medium));
-    --nav-height: 57px;
+    --nav-height: 60px;
     --mobile-nav-height: calc(var(--font-size-large) + (2 * var(--padding-medium)) + (2 * var(--padding-small)));
 
     --z-front: 1000;
@@ -47,8 +47,9 @@
     --image-fade-in-time: 0.2s;
     --button-hover-transition-time: 0.15s;
 
-    --default-content-width: 640px;
-    --default-image-ratio: 1.6;
+    --default-thumbnail-width: 400px;
+    --default-content-width: 680px;
+    --default-image-ratio: 1.5;
 }
 
 @media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {

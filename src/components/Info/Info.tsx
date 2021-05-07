@@ -34,7 +34,7 @@ function Info({ items, config, open, onOpen, onClose }: InfoProps): JSX.Element 
             style={{ width: `${width}px` }}
         >
             <div
-                className={cx(styles.infoCurtain, {
+                className={cx(styles.infoCurtainBox, {
                     [styles.isTransitioning]: isTransitioning,
                     [styles.isOpen]: open,
                     [styles.isClosed]: !open

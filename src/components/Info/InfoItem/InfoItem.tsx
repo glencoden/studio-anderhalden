@@ -20,7 +20,7 @@ function InfoItem({ item, width }: InfoItemProps): JSX.Element {
                 <Image width={width - (2 * numberFromPx(getStyleVariable('--padding-large')))} ratio={1.6} {...item.images[0]} />
             )}
             {item.text && (
-                <RichText entry={item.text} size="m" />
+                <RichText entry={item.text} size="l" />
             )}
         </div>
     );

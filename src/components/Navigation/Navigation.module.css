@@ -4,7 +4,7 @@
     bottom: 0;
     z-index: var(--z-front);
     display: grid;
-    grid-row-gap: var(--space);
+    grid-row-gap: var(--nav-height);
     justify-items: start;
     overflow: hidden;
 }
