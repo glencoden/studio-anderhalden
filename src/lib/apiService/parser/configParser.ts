@@ -4,7 +4,7 @@ import { isHexColor, isObject } from '../../helpers';
 const minAnimationTime = 0.2;
 const maxAnimationTime = 4;
 const minImageSize = 400;
-const maxImageSize = 1000;
+const maxImageSize = 1200;
 const minImageRatio = 1;
 const maxImageRatio = 2;
 
@@ -14,6 +14,7 @@ function configParser(item: RawEntry): Config {
         enabled: false,
         documentTitle: '',
         animationTime: 0,
+        thumbnailSize: 0,
         imageSize: 0,
         ratio: 0,
         palette: {
@@ -39,6 +40,9 @@ function configParser(item: RawEntry): Config {
     }
     if (typeof item.fields.animationszeit === typeof config.animationTime) {
         config.animationTime = Math.min(maxAnimationTime, Math.max(minAnimationTime, item.fields.animationszeit));
+    }
+    if (typeof item.fields.maximaleThumbnailgre === typeof config.thumbnailSize) {
+        config.thumbnailSize = Math.min(maxImageSize, Math.max(minImageSize, item.fields.maximaleThumbnailgre));
     }
     if (typeof item.fields.maximaleBildgre === typeof config.imageSize) {
         config.imageSize = Math.min(maxImageSize, Math.max(minImageSize, item.fields.maximaleBildgre));

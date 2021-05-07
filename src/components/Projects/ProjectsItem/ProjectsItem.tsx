@@ -1,6 +1,6 @@
 import { Project, Config } from '../../../lib/apiService';
 import styles from './ProjectsItem.module.css';
-import { getContentWidth, getImageRatio, getStyleVariable, isMobile, numberFromPx } from '../../../lib/helpers';
+import { getImageRatio, getStyleVariable, getThumbnailWidth, isMobile, numberFromPx } from '../../../lib/helpers';
 
 import Image from '../../Image/Image';
 
@@ -18,7 +18,7 @@ function ProjectsItem({ item, config, callback }: ProjectsItemProps): JSX.Elemen
         );
     }
 
-    let width = getContentWidth(config);
+    let width = getThumbnailWidth(config);
     let ratio = getImageRatio(config);
 
     if (item.thumbnail.file.width === item.thumbnail.file.height) {

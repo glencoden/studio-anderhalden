@@ -1,14 +1,7 @@
 import { EntryFields } from 'contentful';
 import { Project, Config } from '../../lib/apiService';
 import styles from './ProjectDetail.module.css';
-import {
-    getContentWidth,
-    getImageRatio,
-    getStyleVariable,
-    incrementIndex,
-    isMobile,
-    numberFromPx
-} from '../../lib/helpers';
+import { getContentWidth, getImageRatio, getStyleVariable, incrementIndex, isMobile, numberFromPx } from '../../lib/helpers';
 
 import Image from '../Image/Image';
 import RichText from '../RichText/RichText';
@@ -52,9 +45,21 @@ function ProjectDetail({ selectedProjectId, projects, config, setProjectId, onCl
     return (
         <div className={styles.ProjectDetail}>
             <div className={styles.imageBox}>
-                {project.images.map((image, index) => (
-                    <Image key={index} width={width} ratio={ratio} id={image.id} title={image.title} file={image.file} />
-                ))}
+                {project.images.map((image, index) => {
+                    let imageWidth = width;
+                    let imageRatio = ratio;
+                    if (image.file.width === image.file.height) {
+                        imageWidth = Math.round(width / ratio);
+                        imageRatio = 1;
+                    }
+                    if (image.file.width < image.file.height) {
+                        imageRatio = 1 / ratio;
+                        imageWidth = Math.round(width * imageRatio * imageRatio);
+                    }
+                    return (
+                        <Image key={index} width={imageWidth} ratio={imageRatio} id={image.id} title={image.title} file={image.file} />
+                    );
+                })}
             </div>
 
             <div

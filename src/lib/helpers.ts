@@ -19,6 +19,17 @@ export function applyStylesFromConfig(config: Config): void {
     document.documentElement.style.setProperty('--animation-time', `${config.animationTime}s`);
 }
 
+export function getThumbnailWidth(config: Config): number {
+    let width = Math.round(Math.min(
+        (config?.thumbnailSize || numberFromPx(getStyleVariable('--default-thumbnail-width'))),
+        (window.innerWidth / 2))
+    );
+    if (isMobile() && isPortrait()) {
+        width = window.innerWidth - (2 * numberFromPx(getStyleVariable('--padding-medium')));
+    }
+    return width;
+}
+
 export function getContentWidth(config: Config): number {
     let width = Math.round(Math.min(
         (config?.imageSize || numberFromPx(getStyleVariable('--default-content-width'))),

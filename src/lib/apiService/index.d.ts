@@ -32,6 +32,7 @@ type Config = {
     enabled: boolean;
     documentTitle: string;
     animationTime: number;
+    thumbnailSize: number;
     imageSize: number;
     ratio: number;
     palette: {
