@@ -6,6 +6,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: calc(var(--font-size-large) + (2 * var(--padding-medium)));
     border-bottom: 1px solid var(--border-color);
     background-color: var(--background-color);
 }

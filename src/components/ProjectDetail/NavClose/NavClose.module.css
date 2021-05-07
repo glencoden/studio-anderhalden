@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: calc(var(--font-size-large) + (2 * var(--padding-medium)));
 }
 
 .counter {
