@@ -8,14 +8,18 @@
 }
 
 .title {
+    display: none;
+}
+
+/*.title {
     font-size: var(--font-size-medium);
     font-weight: normal;
     text-align: center;
     margin: var(--padding-medium) 0 0;
-}
+}*/
 
 @media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
-    .title {
+    /*.title {
         position: absolute;
         left: calc(100% + var(--space));
         top: 50%;
@@ -28,5 +32,5 @@
 
     .ProjectsItem:hover > .title {
         opacity: 1;
-    }
+    }*/
 }
