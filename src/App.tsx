@@ -16,9 +16,6 @@ import ProjectDetail from './components/ProjectDetail/ProjectDetail';
 import CloseIcon from './components/Icons/CloseIcon';
 import AddIcon from './components/Icons/AddIcon';
 
-const debounceTimeout = 100;
-let resizeTimeoutId = 0;
-
 
 function App(): JSX.Element {
     const { state, asyncDispatch } = useAsyncReducer(reducer, initState);
@@ -27,12 +24,7 @@ function App(): JSX.Element {
     const [ , triggerResize ] = useState(false);
 
     useEffect(() => {
-        const resize = () => {
-            if (resizeTimeoutId) {
-                window.clearTimeout(resizeTimeoutId);
-            }
-            resizeTimeoutId = window.setTimeout(() => triggerResize(prevState => !prevState), debounceTimeout);
-        };
+        const resize = () => triggerResize(prevState => !prevState);
         window.addEventListener('resize', resize);
         return () => window.removeEventListener('resize', resize);
     }, []);

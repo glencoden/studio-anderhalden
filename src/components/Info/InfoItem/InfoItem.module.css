@@ -1,12 +1,18 @@
 .InfoItem {
-    padding: var(--padding-large);
+    padding: var(--padding-medium);
     border-bottom: 1px solid var(--border-color);
-}
-
-.InfoItem:first-child {
-    padding-top: var(--padding-medium);
 }
 
 .InfoItem:last-child {
     border-bottom: none;
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .InfoItem {
+        padding: var(--padding-large);
+    }
+
+    .InfoItem:first-child {
+        padding-top: var(--padding-medium);
+    }
 }

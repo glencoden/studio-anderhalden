@@ -8,7 +8,7 @@
 }
 
 .title {
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-large);
     font-weight: normal;
     text-align: center;
     margin: var(--padding-medium) 0 0;
@@ -22,7 +22,6 @@
         transform: translateY(-50%);
         opacity: 0;
         transition: opacity 0.2s;
-        font-size: var(--font-size-large);
         text-align: start;
         white-space: pre-line;
     }

@@ -33,7 +33,7 @@ function RichText({ entry, size }: RichTextProps): JSX.Element {
         }
         // @ts-ignore
         addTargetBlankToRichText(ref.current);
-    }, []);
+    }, [ entry ]);
 
     return (
         <div
