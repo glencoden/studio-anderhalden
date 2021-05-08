@@ -42,7 +42,7 @@
         top: calc(var(--nav-height) + var(--padding-large));
         max-height: calc(100vh - (2 * var(--nav-height)) - var(--padding-large));
         padding: 0 var(--padding-medium);
-        overflow: scroll;
+        overflow-y: scroll;
     }
 
     .textBox h1 {
