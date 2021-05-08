@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/studio-anderhalden/static/css/main.e316ba5b.chunk.css",
-    "main.js": "/studio-anderhalden/static/js/main.765477b0.chunk.js",
-    "main.js.map": "/studio-anderhalden/static/js/main.765477b0.chunk.js.map",
+    "main.css": "/studio-anderhalden/static/css/main.bbd542ca.chunk.css",
+    "main.js": "/studio-anderhalden/static/js/main.cd42daef.chunk.js",
+    "main.js.map": "/studio-anderhalden/static/js/main.cd42daef.chunk.js.map",
     "runtime-main.js": "/studio-anderhalden/static/js/runtime-main.2d1635a8.js",
     "runtime-main.js.map": "/studio-anderhalden/static/js/runtime-main.2d1635a8.js.map",
     "static/js/2.bdc76e2c.chunk.js": "/studio-anderhalden/static/js/2.bdc76e2c.chunk.js",
     "static/js/2.bdc76e2c.chunk.js.map": "/studio-anderhalden/static/js/2.bdc76e2c.chunk.js.map",
     "index.html": "/studio-anderhalden/index.html",
-    "static/css/main.e316ba5b.chunk.css.map": "/studio-anderhalden/static/css/main.e316ba5b.chunk.css.map",
+    "static/css/main.bbd542ca.chunk.css.map": "/studio-anderhalden/static/css/main.bbd542ca.chunk.css.map",
     "static/js/2.bdc76e2c.chunk.js.LICENSE.txt": "/studio-anderhalden/static/js/2.bdc76e2c.chunk.js.LICENSE.txt",
     "static/media/index.css": "/studio-anderhalden/static/media/Basel-Grotesk-Regular.90d7b282.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.2d1635a8.js",
     "static/js/2.bdc76e2c.chunk.js",
-    "static/css/main.e316ba5b.chunk.css",
-    "static/js/main.765477b0.chunk.js"
+    "static/css/main.bbd542ca.chunk.css",
+    "static/js/main.cd42daef.chunk.js"
   ]
 }
