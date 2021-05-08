@@ -1,4 +1,5 @@
 .ProjectsItem {
+    position: relative;
     padding: var(--padding-medium) 0;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
@@ -11,4 +12,21 @@
     font-weight: normal;
     text-align: center;
     margin: var(--padding-medium) 0 0;
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .title {
+        position: absolute;
+        left: calc(100% + var(--space));
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: opacity 0.2s;
+        text-align: start;
+        white-space: pre-line;
+    }
+
+    .ProjectsItem:hover > .title {
+        opacity: 1;
+    }
 }

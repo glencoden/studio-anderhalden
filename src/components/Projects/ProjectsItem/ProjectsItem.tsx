@@ -1,6 +1,6 @@
 import { Project, Config } from '../../../lib/apiService';
 import styles from './ProjectsItem.module.css';
-import { getImageRatio, getStyleVariable, getThumbnailWidth, isMobile, numberFromPx } from '../../../lib/helpers';
+import { getImageRatio, getStyleVariable, getThumbnailWidth, numberFromPx } from '../../../lib/helpers';
 
 import Image from '../../Image/Image';
 
@@ -37,7 +37,6 @@ function ProjectsItem({ item, config, callback }: ProjectsItemProps): JSX.Elemen
     return (
         <div
             className={styles.ProjectsItem}
-            title={item.title}
             onClick={() => callback()}
         >
             <Image
@@ -45,14 +44,12 @@ function ProjectsItem({ item, config, callback }: ProjectsItemProps): JSX.Elemen
                 ratio={ratio}
                 {...item.thumbnail}
             />
-            {/*{isMobile() && (
-                <h4
-                    className={styles.title}
-                    style={{ width: `${width}px` }}
-                >
-                    {item.title}
-                </h4>
-            )}*/}
+            <h4
+                className={styles.title}
+                style={{ width: `${width}px` }}
+            >
+                {item.title}
+            </h4>
         </div>
     );
 }
