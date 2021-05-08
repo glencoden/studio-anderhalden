@@ -1,7 +1,7 @@
 import { EntryFields } from 'contentful';
 import { Project, Config } from '../../lib/apiService';
 import styles from './ProjectDetail.module.css';
-import { getContentWidth, getImageRatio, getStyleVariable, incrementIndex, isMobile, numberFromPx } from '../../lib/helpers';
+import { getContentWidth, getImageRatio, getStyleVariable, incrementIndex, isMobile, isPortrait, numberFromPx } from '../../lib/helpers';
 
 import Image from '../Image/Image';
 import RichText from '../RichText/RichText';
@@ -64,7 +64,10 @@ function ProjectDetail({ selectedProjectId, projects, config, setProjectId, onCl
 
             <div
                 className={styles.textBox}
-                style={isMobile() ? {} : { right: `${textBoxRight}px`, width: `${textBoxWidth}px` }}
+                style={isMobile()
+                    ? isPortrait() ? {} : { width: `${width}px`, position: 'relative', left: '50%', transform: 'translateX(-50%)' }
+                    : { right: `${textBoxRight}px`, width: `${textBoxWidth}px` }
+                }
             >
                 <h1>{project.title}</h1>
                 <RichText entry={project.text as EntryFields.RichText} size="m" />
