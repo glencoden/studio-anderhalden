@@ -8,29 +8,26 @@
 }
 
 .title {
-    display: none;
-}
-
-/*.title {
     font-size: var(--font-size-medium);
     font-weight: normal;
     text-align: center;
     margin: var(--padding-medium) 0 0;
-}*/
+}
 
 @media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
-    /*.title {
+    .title {
         position: absolute;
-        left: calc(100% + var(--space));
+        left: calc(100% + var(--padding-medium));
         top: 50%;
         transform: translateY(-50%);
         opacity: 0;
         transition: opacity 0.2s;
+        font-size: var(--font-size-large);
         text-align: start;
         white-space: pre-line;
     }
 
     .ProjectsItem:hover > .title {
         opacity: 1;
-    }*/
+    }
 }
