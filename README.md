@@ -2,8 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This project builds a web app that displays content from the Contentful Delivery API https://www.contentful.com/developers/docs/references/content-delivery-api/. <br/>
-See https://www.contentful.com/help for further help on Contentful.
+This project builds a web app that displays content from the [Contentful Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/). <br/>
+More on [Contentful](https://www.contentful.com/help).
 
 ### work flow
 
