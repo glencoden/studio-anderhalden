@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/studio-anderhalden/static/css/main.c08d4fc0.chunk.css",
-    "main.js": "/studio-anderhalden/static/js/main.22620a3d.chunk.js",
-    "main.js.map": "/studio-anderhalden/static/js/main.22620a3d.chunk.js.map",
+    "main.css": "/studio-anderhalden/static/css/main.32029905.chunk.css",
+    "main.js": "/studio-anderhalden/static/js/main.ac37af9a.chunk.js",
+    "main.js.map": "/studio-anderhalden/static/js/main.ac37af9a.chunk.js.map",
     "runtime-main.js": "/studio-anderhalden/static/js/runtime-main.2d1635a8.js",
     "runtime-main.js.map": "/studio-anderhalden/static/js/runtime-main.2d1635a8.js.map",
-    "static/js/2.f3368366.chunk.js": "/studio-anderhalden/static/js/2.f3368366.chunk.js",
-    "static/js/2.f3368366.chunk.js.map": "/studio-anderhalden/static/js/2.f3368366.chunk.js.map",
+    "static/js/2.bdc76e2c.chunk.js": "/studio-anderhalden/static/js/2.bdc76e2c.chunk.js",
+    "static/js/2.bdc76e2c.chunk.js.map": "/studio-anderhalden/static/js/2.bdc76e2c.chunk.js.map",
     "index.html": "/studio-anderhalden/index.html",
-    "static/css/main.c08d4fc0.chunk.css.map": "/studio-anderhalden/static/css/main.c08d4fc0.chunk.css.map",
-    "static/js/2.f3368366.chunk.js.LICENSE.txt": "/studio-anderhalden/static/js/2.f3368366.chunk.js.LICENSE.txt",
+    "static/css/main.32029905.chunk.css.map": "/studio-anderhalden/static/css/main.32029905.chunk.css.map",
+    "static/js/2.bdc76e2c.chunk.js.LICENSE.txt": "/studio-anderhalden/static/js/2.bdc76e2c.chunk.js.LICENSE.txt",
     "static/media/index.css": "/studio-anderhalden/static/media/Basel-Grotesk-Regular.90d7b282.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.2d1635a8.js",
-    "static/js/2.f3368366.chunk.js",
-    "static/css/main.c08d4fc0.chunk.css",
-    "static/js/main.22620a3d.chunk.js"
+    "static/js/2.bdc76e2c.chunk.js",
+    "static/css/main.32029905.chunk.css",
+    "static/js/main.ac37af9a.chunk.js"
   ]
 }
