@@ -1,4 +1,10 @@
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 .ProjectDetail {
+    animation: fade-in 0.2s;
     position: relative;
     padding: calc(var(--font-size-large) + (3 * var(--padding-medium))) 0;
 }
