@@ -1,0 +1,33 @@
+.Navigation {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: var(--z-front);
+    display: grid;
+    grid-row-gap: var(--nav-height);
+    justify-items: start;
+    overflow: hidden;
+}
+
+.mobileNav {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: var(--mobile-nav-height);
+    grid-row-gap: 0;
+    justify-items: end;
+    align-items: start;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--background-color);
+}
+
+.spacer {
+    width: 100%;
+    height: var(--mobile-nav-height);
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .Navigation {
+        left: calc(1px + var(--padding-medium));
+    }
+}

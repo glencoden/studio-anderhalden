@@ -1,0 +1,33 @@
+.NavClose {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: var(--mobile-nav-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(var(--font-size-large) + (2 * var(--padding-medium)));
+}
+
+.counter {
+    height: var(--nav-height);
+    border-left: 1px solid var(--border-color);
+}
+
+.closeButton {
+    background-color: transparent;
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .NavClose {
+        justify-content: space-between;
+        align-items: start;
+        top: 0;
+        height: var(--nav-height);
+        width: 100%;
+        padding-left: 50%;
+        padding-right: var(--padding-medium);
+        border-bottom: 1px solid var(--border-color);
+        background-color: var(--background-color);
+    }
+}

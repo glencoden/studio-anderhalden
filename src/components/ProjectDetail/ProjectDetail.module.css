@@ -1,0 +1,65 @@
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.ProjectDetail {
+    animation: fade-in 0.2s;
+    position: relative;
+    padding: calc(var(--font-size-large) + (3 * var(--padding-medium))) 0;
+}
+
+.imageBox {
+    position: relative;
+    display: grid;
+    grid-gap: var(--padding-medium);
+    justify-items: center;
+}
+
+.textBox {
+    display: grid;
+    grid-gap: var(--padding-large);
+    padding: var(--padding-large) var(--padding-medium);
+}
+
+.textBox h1 {
+    width: 100%;
+    font-size: var(--font-size-large);
+    font-weight: normal;
+    margin: var(--padding-medium) 0 0;
+    white-space: pre-line;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-color-primary);
+}
+
+.space {
+    display: none;
+    height: var(--nav-height);
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .ProjectDetail {
+        padding: calc(var(--nav-height) + var(--padding-large)) 0 calc(2 * var(--nav-height));
+    }
+
+    .textBox {
+        position: fixed;
+        top: calc(var(--nav-height) + var(--padding-large));
+        max-height: calc(100vh - (2 * var(--nav-height)) - var(--padding-large));
+        padding: 0 var(--padding-medium);
+        overflow-y: scroll;
+    }
+
+    .textBox::-webkit-scrollbar {
+        display: none;
+    }
+
+    .textBox h1 {
+        margin: 0;
+    }
+
+    .space {
+        display: block;
+    }
+}

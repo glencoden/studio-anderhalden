@@ -1,0 +1,18 @@
+.Projects {
+    position: relative;
+    display: grid;
+    grid-row-gap: var(--space);
+    justify-items: center;
+    padding: var(--space) 0;
+}
+
+.centerLine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    min-height: 100vh;
+    border-right: 1px solid var(--border-color);
+    z-index: -10;
+}

@@ -1,0 +1,37 @@
+.NavSkip {
+    position: fixed;
+    left: 0;
+    top: var(--mobile-nav-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: calc(var(--font-size-large) + (2 * var(--padding-medium)));
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--background-color);
+}
+
+.skipButton {
+    background-color: transparent;
+}
+
+@media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
+    .NavSkip {
+        top: calc(100vh - var(--nav-height));
+        height: var(--nav-height);
+        padding: 0 var(--padding-medium) 0 50%;
+        border-bottom: none;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .skipButton {
+        height: var(--nav-height);
+        padding-top: calc(var(--nav-height) - var(--font-size-large) - (2 * var(--padding-medium)));
+        background-color: transparent;
+    }
+
+    .selectPrev {
+        padding-left: var(--padding-medium);
+        border-left: 1px solid var(--border-color);
+    }
+}
