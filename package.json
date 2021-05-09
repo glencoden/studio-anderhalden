@@ -2,7 +2,6 @@
     "name": "studio-anderhalden",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://glencoden.github.io/studio-anderhalden/",
     "dependencies": {
         "@contentful/rich-text-react-renderer": "^14.1.3",
         "@testing-library/jest-dom": "^5.11.4",
