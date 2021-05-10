@@ -17,7 +17,8 @@
 
 @media only screen and (min-width: 620px) and (orientation: portrait), only screen and (min-width: 820px) and (orientation: landscape) {
     .NavSkip {
-        top: calc(100vh - var(--nav-height));
+        top: auto;
+        bottom: 0;
         height: var(--nav-height);
         padding: 0 var(--padding-medium) 0 50%;
         border-bottom: none;
