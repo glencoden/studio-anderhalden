@@ -24,6 +24,8 @@
         transition: opacity 0.2s;
         text-align: start;
         white-space: pre-line;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .ProjectsItem:hover > .title {
