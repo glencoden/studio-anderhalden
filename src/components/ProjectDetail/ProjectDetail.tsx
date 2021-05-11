@@ -33,13 +33,13 @@ function ProjectDetail({ selectedProjectId, projects, config, setProjectId, onCl
     const width = getContentWidth(config);
     const ratio = getImageRatio(config);
 
-    const padding = numberFromPx(getStyleVariable('--padding-medium'));
-    let textBoxRight = (window.innerWidth / 2) - width;
+    const padding = numberFromPx(getStyleVariable('--padding-large'));
+    const widthOverhead = (window.innerWidth / 2) - width;
+    const textBoxTranslateX = (width / 2) + padding;
     let textBoxWidth = width / 2;
 
-    if (textBoxRight < padding) {
-        textBoxRight = padding;
-        textBoxWidth -= padding;
+    if (widthOverhead < (2 * padding)) {
+        textBoxWidth -= ((2 * padding) - widthOverhead);
     }
 
     return (
@@ -66,7 +66,7 @@ function ProjectDetail({ selectedProjectId, projects, config, setProjectId, onCl
                 className={styles.textBox}
                 style={isMobile()
                     ? isPortrait() ? {} : { width: `${width}px`, position: 'relative', left: '50%', transform: 'translateX(-50%)' }
-                    : { right: `${textBoxRight}px`, width: `${textBoxWidth}px` }
+                    : { width: `${textBoxWidth}px`, transform: `translateX(${textBoxTranslateX}px)` }
                 }
             >
                 <h1>{project.title}</h1>
