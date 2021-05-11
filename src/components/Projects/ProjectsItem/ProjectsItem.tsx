@@ -1,6 +1,6 @@
 import { Project, Config } from '../../../lib/apiService';
 import styles from './ProjectsItem.module.css';
-import { getImageRatio, getStyleVariable, getThumbnailWidth, numberFromPx } from '../../../lib/helpers';
+import { getImageRatio, getStyleVariable, getThumbnailWidth, isMobile, numberFromPx } from '../../../lib/helpers';
 
 import Image from '../../Image/Image';
 
@@ -18,6 +18,7 @@ function ProjectsItem({ item, config, callback }: ProjectsItemProps): JSX.Elemen
         );
     }
 
+    const padding = numberFromPx(getStyleVariable('--padding-medium'));
     let width = getThumbnailWidth(config);
     let ratio = getImageRatio(config);
 
@@ -28,10 +29,15 @@ function ProjectsItem({ item, config, callback }: ProjectsItemProps): JSX.Elemen
 
     if (item.thumbnail.file.width < item.thumbnail.file.height) {
         const prevWidth = width;
-        const padding = numberFromPx(getStyleVariable('--padding-medium'));
 
         width = Math.round(width / ratio);
         ratio = width / (prevWidth - (4 * padding));
+    }
+
+    let titleWidth = width;
+
+    if (!isMobile() && window.innerWidth < ((3 * width) + (4 * padding))) {
+        titleWidth = ((window.innerWidth - width) / 2) - (2 * padding);
     }
 
     return (
@@ -46,7 +52,7 @@ function ProjectsItem({ item, config, callback }: ProjectsItemProps): JSX.Elemen
             />
             <h4
                 className={styles.title}
-                style={{ width: `${width}px` }}
+                style={{ width: `${titleWidth}px` }}
             >
                 {item.title}
             </h4>

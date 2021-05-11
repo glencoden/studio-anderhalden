@@ -20,6 +20,7 @@ function Image({ width, ratio, id, title, file }: ImageProps): JSX.Element {
     const [ loaded, setLoaded ] = useState(false);
 
     useEffect(() => {
+        setLoaded(false);
         apiService.getImageUrl({ id, width, height })
             .then(imageUrl => setSrc(imageUrl))
             .catch(err => {
@@ -30,6 +31,13 @@ function Image({ width, ratio, id, title, file }: ImageProps): JSX.Element {
         return () => clearTimeout(timeoutId);
     }, [ id, width, height, file.url ]);
 
+    const imageStyle: { [key: string]: any } = { opacity: 1 };
+
+    if (!loaded) {
+        imageStyle.opacity = 0;
+        imageStyle.transition = 'none';
+    }
+
     return (
         <div
             className={styles.ImageBox}
@@ -38,7 +46,7 @@ function Image({ width, ratio, id, title, file }: ImageProps): JSX.Element {
             {src && (
                 <img
                     className={styles.Image}
-                    style={{ opacity: loaded ? 1 : 0 }}
+                    style={imageStyle}
                     ref={imageRef}
                     src={src}
                     alt={title}

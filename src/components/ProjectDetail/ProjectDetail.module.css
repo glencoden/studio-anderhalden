@@ -45,9 +45,10 @@
 
     .textBox {
         position: fixed;
+        left: 50%;
         top: calc(var(--nav-height) + var(--padding-large));
         max-height: calc(100vh - (2 * var(--nav-height)) - var(--padding-large));
-        padding: 0 var(--padding-medium);
+        padding: 0 var(--padding-medium) 0 0;
         overflow-y: scroll;
     }
 
