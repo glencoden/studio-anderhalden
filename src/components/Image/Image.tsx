@@ -1,7 +1,7 @@
 import { ParsedImage } from '../../lib/apiService';
 import { useRef, useState, useEffect } from 'react';
 import styles from './Image.module.css';
-import { apiService } from '../../lib/apiService/apiService';
+// import { apiService } from '../../lib/apiService/apiService';
 
 interface ImageProps extends ParsedImage {
     width: number;
@@ -21,12 +21,13 @@ function Image({ width, ratio, id, title, file }: ImageProps): JSX.Element {
 
     useEffect(() => {
         setLoaded(false);
-        apiService.getImageUrl({ id, width, height })
-            .then(imageUrl => setSrc(imageUrl))
-            .catch(err => {
-                console.warn('no image url', err);
-                setSrc(file.url);
-            });
+        // apiService.getImageUrl({ id, width, height })
+        //     .then(imageUrl => setSrc(imageUrl))
+        //     .catch(err => {
+        //         console.warn('no image url', err);
+        //         setSrc(file.url);
+        //     });
+        setSrc(file.url);
         const timeoutId = setTimeout(() => setLoaded(true), imageLoadingTimeout * 1000);
         return () => clearTimeout(timeoutId);
     }, [ id, width, height, file.url ]);
@@ -51,7 +52,7 @@ function Image({ width, ratio, id, title, file }: ImageProps): JSX.Element {
                     src={src}
                     alt={title}
                     onLoad={() => setLoaded(true)}
-                    onError={() => setSrc(file.url)}
+                    // onError={() => setSrc(file.url)}
                 />
             )}
         </div>
